@@ -9,6 +9,9 @@ deviation reports (Word), supplier status (HTML), lot data (CSV) - and much of t
 must not reach partners). Goals: accurate cited answers, summaries and search across all formats including figures,
 behind REST APIs for enterprise integration, with clearance-based access and no medical or disposition advice.
 
+**Users:** supply planners, quality assurance and regulatory affairs specialists, and external logistics partners
+- see section 6 and the [README](../README.md#who-uses-it).
+
 ## 2. Architecture
 ```
 Sources (PDF, DOCX, HTML, MD, CSV)

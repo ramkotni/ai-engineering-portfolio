@@ -16,6 +16,39 @@ with versioned prompt templates and document-level access control.
 | **Test URLs** | API **http://localhost:8003/docs** - UI **http://localhost:8503** - metrics **http://localhost:8003/metrics** |
 | **Docs** | [Design document](docs/DESIGN.md) - [Slides](docs/Supply_Chain_Knowledge_Assistant.pptx) |
 
+## Business use case
+| | |
+|---|---|
+| **Problem** | Supply-chain, quality and regulatory teams need answers from controlled documents in many formats - SOPs (PDF), deviation reports (Word), supplier status pages (HTML), lot data (CSV). Key facts sit in **figures** (decision flowcharts, distribution maps, temperature charts) that keyword search cannot read, and confidential documents must never reach external partners. |
+| **What the assistant does** | Cited question answering, document summaries and semantic search across all formats, including what the figures show; access by document classification; refuses medical / dosing advice and release / reject decisions. |
+| **Value (pilot targets)** | Faster answers during temperature excursions and inspections, one search across formats, no confidential leakage to partners. Targets to measure in a pilot, not prototype results. |
+
+## Who uses it
+| User | Typical question | Role (`supplykb/roles.yaml`) | Demo API key |
+|---|---|---|---|
+| Supply planner | "Which packaging configuration is used for lane L2?" | `supply_planner` - clearance **internal** | `planner-demo-key` |
+| Quality assurance specialist | "Summarize DEV-2026-014" | `quality_assurance` - clearance **confidential** | `qa-demo-key` |
+| Regulatory affairs specialist | "What does our GDP policy require for temperature records?" | `regulatory_affairs` - clearance **confidential** | `ra-demo-key` |
+| Logistics partner (external 3PL / carrier) | "What are the transport rules for cold-chain products?" | `logistics_partner` - clearance **public**, QA and search only | `partner-demo-key` |
+
+Clearance is enforced before retrieval, so restricted text never reaches the prompt; `/documents` and
+`/images/{id}` apply the same check.
+
+## Tech stack
+| Layer | Technology |
+|---|---|
+| Language | Python 3.12 |
+| Orchestration | LangGraph 1.2 - single-agent workflow (guard, classify, authorize, retrieve, grade, generate, verify) |
+| LLM framework | LangChain core 1.6 (`ChatPromptTemplate` versioned prompts), langchain-ollama 1.1 |
+| Models | Ollama 0.40 REST API: `llama3.2` (answers), `nomic-embed-text` (embeddings), `gemma3:4b` (image captions) |
+| Extraction | pdfplumber 0.11 (PDF text, tables, reading order), PyMuPDF 1.28 (PDF images), python-docx 1.2 (Word text, tables, inline pictures), BeautifulSoup 4.15 (HTML) |
+| Retrieval | ChromaDB 1.5 + BM25 hybrid with RRF; classification filter before ranking; exact `LOT-` lookup |
+| Sample data | PyMuPDF, python-docx, Pillow 12 (synthetic PDFs, Word files and figures) |
+| API / UI | FastAPI 0.143 + Uvicorn 0.54 (REST, `X-API-Key` roles), Streamlit 1.65 |
+| Evaluation | Labelled datasets + `eval/run_eval.py`, RAGAS 0.4.3, LangSmith experiments |
+| Monitoring | LangSmith 0.14 tracing + feedback, Prometheus-format `/metrics`, JSONL audit log |
+| Quality | pytest 9.1 (fake LLM, no model needed), ruff 0.17 |
+
 ## Sample data (synthetic, committed) - `data/raw/`, regenerate with `python data/generate_data.py`
 | File | Format | Classification | What it exercises |
 |---|---|---|---|

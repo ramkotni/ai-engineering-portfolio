@@ -16,6 +16,9 @@ errors, reconciliation breaks, credential expiry, late settlement). Evidence is 
 | Never move money | Read-only guardrail: commands to release / approve / cancel / re-send are refused |
 | Trustworthy numbers | Numeric + incident-ID grounding on every answer |
 
+**Users:** payment operations analysts and managers, finance executives, internal auditors and contracted IT
+support engineers - see the roles in section 5 and the user table in the [README](../README.md#who-uses-it).
+
 ## 2. Architecture
 ```
 CLI / FastAPI :8001 / Streamlit :8501

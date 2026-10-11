@@ -23,6 +23,10 @@ Companion material: [README](../README.md) (setup, run, deploy) and
 Non-goals of the prototype: multi-turn conversation, user authentication, document authoring or
 approval workflow, OCR of scanned documents.
 
+**Users:** production floor supervisors (primary), maintenance technicians, quality engineers, EHS managers and
+on-site contractors (safety procedures only) - see "Sample roles" in section 10 and the
+[README](../README.md#who-uses-it).
+
 ## 2. End-to-end architecture
 
 ```
@@ -318,8 +322,8 @@ independent of any SaaS, and works offline.
 | Config | pydantic-settings, python-dotenv | 2.15.0 / 1.2.4 | Typed settings from env / `.env` |
 | API / UI | FastAPI + Uvicorn, Streamlit | 0.143.0 / 1.65.0 | REST for integration; quick supervisor UI |
 | AWS runtime | Bedrock AgentCore Runtime (`bedrock-agentcore`), or App Runner / ECS via Docker | 1.24.1 | Managed agent hosting or a plain container |
-| Monitoring | LangSmith + JSONL audit log | 0.14.5 | Traces, feedback, experiments; offline audit trail |
-| Testing | pytest (44 unit + 3 integration), ruff | 9.1.1 | Fakes for LLM and retrievers; no model needed for unit tests |
+| Monitoring | LangSmith + JSONL audit log + `/metrics` | 0.14.7 | Traces, feedback, experiments; offline audit trail |
+| Testing | pytest (48 unit + 3 integration), ruff | 9.1.1 | Fakes for LLM and retrievers; no model needed for unit tests |
 | Slides | pptxgenjs (Node) | 3.12.0 | Deck generated from code (`deck/build_deck.js`) |
 
 ## 10. Security and privacy

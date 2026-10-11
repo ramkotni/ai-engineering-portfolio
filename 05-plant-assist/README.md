@@ -51,6 +51,28 @@ Example scenarios:
 | "Eight points in a row above the X-bar center line" | Western Electric rule from the SPC standard and the reaction plan |
 | "What's on the cafeteria menu?" | Polite decline - no retrieval, no generated answer |
 
+### Who uses it
+| User | Typical question | Role (`plant_assist/roles.yaml`) | Demo API key |
+|---|---|---|---|
+| Production floor supervisor | "How do I replace the main cylinder seal on the HP-200 press?" | `floor_supervisor` - safety, maintenance, quality | `supervisor-demo-key` |
+| Maintenance technician | "The AC-75 compressor is overheating - what should I check?" | `maintenance_technician` - safety, maintenance | `tech-demo-key` |
+| Quality engineer | "Eight points in a row above the X-bar center line - what now?" | `quality_engineer` - safety, quality | `quality-demo-key` |
+| EHS manager | "About 10 gallons of solvent spilled near line 3" | `ehs_manager` - all sources | `ehs-demo-key` |
+| On-site contractor | "What PPE do I need near the press?" | `contractor` - safety procedures only | `contractor-demo-key` |
+
+Safety procedures are searchable by every role.
+
+### Tech stack (summary - full table with versions in [DESIGN.md section 9](docs/DESIGN.md#9-technology-stack))
+| Layer | Technology |
+|---|---|
+| Orchestration | LangGraph 1.2 - routed workflow with parallel `Send()` retrieval per source |
+| LLM framework / models | LangChain core 1.6; Ollama `llama3.2` + `nomic-embed-text` locally, Amazon Bedrock (Claude, Titan embeddings) in AWS |
+| Retrieval | ChromaDB 1.5 (one collection per source) + BM25 hybrid |
+| Extraction | PyYAML (front matter), python-docx, pdfplumber |
+| API / UI / hosting | FastAPI + Uvicorn, Streamlit; Docker, Bedrock AgentCore Runtime or App Runner / ECS |
+| Evaluation / monitoring | Routing, retrieval and guardrail datasets, RAGAS 0.4.3, LangSmith, `/metrics`, JSONL audit log |
+| Quality | pytest (48 unit + 3 integration), ruff |
+
 ## 2. Is this multi-agent?
 
 **No - it is an agentic workflow, by design.** One LangGraph `StateGraph` uses an LLM at three

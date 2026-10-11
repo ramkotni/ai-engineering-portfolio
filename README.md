@@ -16,6 +16,35 @@ LangSmith tracing, Prometheus-style metrics, tests, a design document and a slid
 | 04 | [Project Feasibility Prediction](04-project-feasibility-ml/) | **Classical ML** + LangGraph advisor | scikit-learn pipeline, model comparison, interpretable logistic regression, PSI drift, explanations | [:8004/docs](http://localhost:8004/docs) / [:8504](http://localhost:8504) |
 | 05 | [PlantAssist](05-plant-assist/) | **Routed RAG** (agentic workflow) | Routes to safety / maintenance / quality docs, safety-first policy, numeric grounding, AWS Bedrock path | [:8005/docs](http://localhost:8005/docs) / [:8505](http://localhost:8505) |
 
+## Business use cases and users
+| # | Business problem | Who uses it (sample roles) |
+|---|---|---|
+| 01 | Failed, duplicate and late payments investigated by hand across tickets, reports and runbooks; repeat incidents and hidden month-end trends | Payment ops analysts and managers, finance executives, internal auditors, contracted IT support (amounts masked) |
+| 02 | Robot failures that look alike, calendar-based maintenance, uneven workload and manual shift reports in a robotic warehouse | Robotics technicians, shift leads, fleet managers, site leadership, zone-limited contract technicians |
+| 03 | Controlled documents in five formats with key facts inside figures, and confidential content that must not reach partners | Supply planners, quality assurance, regulatory affairs, external logistics partners (public documents only) |
+| 04 | Inconsistent, reviewer-dependent funding decisions for new projects; risky projects approved and then slipping | Project managers, portfolio directors / PMO, the data scientist who owns the model, read-only stakeholders |
+| 05 | Floor supervisors who know the question but not which binder (safety, maintenance, quality) holds the answer | Floor supervisors, maintenance technicians, quality engineers, EHS managers, contractors (safety only) |
+
+Each project README has a **Business use case**, **Who uses it** (user, typical question, role, demo API key) and
+**Tech stack** section; each `docs/DESIGN.md` has the full design rationale.
+
+## Tech stack (versions tested)
+| Layer | Technology |
+|---|---|
+| Language | Python 3.12.5 |
+| Agent orchestration | LangGraph 1.2.14 |
+| LLM framework | LangChain core 1.6.9, langchain-ollama 1.1.0 (langchain-aws for Bedrock in 05) |
+| Local models | Ollama 0.40.2: `llama3.2` (3B), `nomic-embed-text`, `gemma3:4b` (vision), `llama3.2-judge` (CPU-capped RAGAS judge) |
+| Cloud models | Amazon Bedrock (Claude, Titan Text Embeddings v2) by configuration |
+| Vector store / search | ChromaDB 1.5.9 + in-process BM25 (hybrid with reciprocal rank fusion) |
+| Document extraction | pdfplumber 0.11.10, PyMuPDF 1.28.2, python-docx 1.2.0, BeautifulSoup 4.15.0, PyYAML |
+| Analytics / ML | pandas 3.0.6, numpy 2.5.4, scikit-learn 1.9.1, joblib 1.6.0 |
+| API / UI | FastAPI 0.143.0 + Uvicorn 0.54.0, Streamlit 1.65.0 |
+| Evaluation | RAGAS 0.4.3, LangSmith experiments, project eval scripts |
+| Monitoring | LangSmith 0.14.7, Prometheus-format `/metrics`, JSONL audit logs |
+| Quality | pytest 9.1.1, ruff 0.17.0 |
+| Slides | pptxgenjs 3.12.0 (Node) |
+
 ## Common building blocks (in every project)
 | Concern | Implementation |
 |---|---|
@@ -33,8 +62,9 @@ LangSmith tracing, Prometheus-style metrics, tests, a design document and a slid
 # 1. Python env (one shared env for all projects, or one per project with its requirements.txt)
 cd C:\AI\ai-engineering-portfolio
 python -m venv .venv; .venv\Scripts\Activate.ps1
-pip install -r 01-payment-ops-intelligence/requirements.txt -r 03-supply-chain-knowledge-assistant/requirements.txt `
-            -r 04-project-feasibility-ml/requirements.txt -r 05-plant-assist/requirements-app.txt
+pip install -r 01-payment-ops-intelligence/requirements.txt -r 02-robotics-fleet-assistant/requirements.txt `
+            -r 03-supply-chain-knowledge-assistant/requirements.txt -r 04-project-feasibility-ml/requirements.txt `
+            -r 05-plant-assist/requirements-app.txt
 
 # 2. Local models (Ollama)
 ollama pull llama3.2; ollama pull nomic-embed-text; ollama pull gemma3:4b
@@ -47,6 +77,27 @@ python -m payops.ingest
 uvicorn payops.api:app --port 8001     # http://localhost:8001/docs
 ```
 Each project's README has its own run, test, evaluation and monitoring instructions.
+
+## Run all projects at once
+```powershell
+.\scripts\start_all.ps1                  # APIs on :8001-8005, UIs on :8501-8505 (builds a missing index first)
+.\scripts\start_all.ps1 -Projects 01,03  # or just some of them
+.\scripts\status.ps1                     # which APIs / UIs are up
+.\scripts\stop_all.ps1                   # stop them all
+```
+Logs: `<project>\logs\api.log` and `ui.log`. Ollama must be running for LLM answers; guardrail refusals,
+search and the ML predictions (04) work without it. Ten Python processes use about 2-3 GB of RAM.
+
+| Project | Open in the browser | Try it with |
+|---|---|---|
+| 01 Payment Ops | http://localhost:8501 - API http://localhost:8001/docs | role `payment_analyst`: "Find past incidents like a wire rejected for a bad routing number" |
+| 02 Robotics Fleet | http://localhost:8502 - API http://localhost:8002/docs | role `shift_lead`: "How many robots are active per zone?" |
+| 03 Supply Chain KB | http://localhost:8503 - API http://localhost:8003/docs | role `quality_assurance`: "Find documents about temperature excursions" |
+| 04 Feasibility ML | http://localhost:8504 - API http://localhost:8004/docs | role `project_manager`: score a project in the form |
+| 05 PlantAssist | http://localhost:8505 - API http://localhost:8005/docs | role `floor_supervisor`: "How do I replace the main cylinder seal on the HP-200 press?" |
+
+In the API docs page, open an endpoint, click **Try it out** and put a demo key from the project's README
+(e.g. `analyst-demo-key`) in the `x-api-key` field. In the UIs, pick the role from the sidebar.
 
 ## Test everything
 ```powershell
@@ -71,5 +122,5 @@ RAGAS (its thread cap lives in the model). Expect 1-3 minutes per LLM answer on 
 04-project-feasibility-ml/     05-plant-assist/
   <package>/  data/ (generator + synthetic raw data)  eval/  tests/  ui/  docs/ (DESIGN.md + .pptx)  README.md
 tools/deck/      shared slide-deck builder (pptxgenjs)     tools/ollama/   capped judge Modelfile
-scripts/         run_all_tests.ps1 / .sh
+scripts/         start_all.ps1 / stop_all.ps1 / status.ps1, run_all_tests.ps1 / .sh
 ```

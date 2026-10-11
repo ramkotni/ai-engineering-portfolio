@@ -14,6 +14,39 @@ battery analysis, predictive maintenance, task (workload) optimisation, fleet st
 | **Test URLs** | API **http://localhost:8002/docs** - UI **http://localhost:8502** - metrics **http://localhost:8002/metrics** |
 | **Docs** | [Design document](docs/DESIGN.md) - [Slides](docs/Robotics_Fleet_Assistant.pptx) |
 
+## Business use case
+| | |
+|---|---|
+| **Problem** | A warehouse runs 40 autonomous mobile robots across four zones (inbound, storage, pick, outbound). Failures look alike on the fleet console, maintenance is calendar-based instead of condition-based, workload is uneven across robots, and shift reports are compiled by hand. |
+| **What the assistant does** | Diagnoses robot issues from incident history and the troubleshooting guide, finds batteries degrading faster than policy, ranks robots by maintenance risk, proposes workload moves and writes the daily fleet report. **Advisory only**: it never moves, reboots or reconfigures robots and refuses to help bypass safety systems. |
+| **Value (pilot targets)** | Less unplanned robot downtime, batteries replaced before they fail, balanced utilisation, faster shift handover. Targets to measure in a pilot, not prototype results. |
+
+## Who uses it
+| User | Typical question | Role (`fleetops/roles.yaml`) | Demo API key |
+|---|---|---|---|
+| Robotics maintenance technician | "Why does R-1007 keep returning to the charger?" | `technician` - diagnostics, navigation, battery, maintenance, status | `tech-demo-key` |
+| Floor shift lead | "Which robots should take work from overloaded ones?" | `shift_lead` - status, task assignment, summary, diagnostics | `lead-demo-key` |
+| Fleet / robotics manager | "Which robots need maintenance next?" | `fleet_manager` - all workflows | `manager-demo-key` |
+| Site leadership | "Give me today's fleet health summary" | `site_executive` - summary, status | `exec-demo-key` |
+| Contract technician (inbound zone) | "Why does R-1005 keep stopping?" | `contractor_technician` - diagnostics, battery, navigation; **only Z1-Inbound robots** | `contractor-demo-key` |
+
+Zone scope is row-level security: a contractor asking about a robot in another zone is denied, and retrieval
+and analytics only see their zone.
+
+## Tech stack
+| Layer | Technology |
+|---|---|
+| Language | Python 3.12 |
+| Orchestration | LangGraph 1.2 - supervisor + 8 agents with a fixed plan per intent; only the last agent narrates with the LLM |
+| LLM framework | LangChain core 1.6, langchain-ollama 1.1 (structured output for intent and slots) |
+| Models | Ollama 0.40: `llama3.2` (3B), `nomic-embed-text`; Amazon Bedrock by configuration |
+| Retrieval | ChromaDB 1.5 (collections `events`, `knowledge`) + BM25 hybrid with RRF; zone / robot / event-type filters |
+| Analytics | pandas 3.0 + numpy 2.5 (battery slope by least squares, risk score, rebalancing) - telemetry is queried, not embedded |
+| API / UI | FastAPI 0.143 + Uvicorn 0.54 (REST, `X-API-Key` roles), Streamlit 1.65 |
+| Evaluation | Labelled datasets + `eval/run_eval.py`, RAGAS 0.4.3, LangSmith experiments |
+| Monitoring | LangSmith 0.14 tracing + feedback, Prometheus-format `/metrics`, JSONL audit log |
+| Quality | pytest 9.1 (fake LLM, no model needed), ruff 0.17 |
+
 ## Workflows
 
 | Intent | Agents (in order) | Example |

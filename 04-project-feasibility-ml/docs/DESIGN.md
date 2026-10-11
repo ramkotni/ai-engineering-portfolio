@@ -7,6 +7,9 @@ An intake board reviews proposed projects. Feasibility judgements are inconsiste
 Goals: a **calibrated probability** that a project will be delivered feasibly, the **drivers** behind it in
 business language, **mitigations**, and monitoring that tells the data science team when inputs drift.
 
+**Users:** project managers, portfolio directors / PMO, the data scientist who owns the model, and read-only
+stakeholders - see section 7 and the [README](../README.md#who-uses-it).
+
 ## 2. Architecture
 ```
 data/raw/projects.csv -> validate -> clean -> FeatureBuilder -> ColumnTransformer -> model   (feasibility/train.py)

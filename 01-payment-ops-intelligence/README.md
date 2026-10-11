@@ -15,6 +15,40 @@ recommendations and executive summaries over historical incidents and monitoring
 | **Test URLs** | API docs **http://localhost:8001/docs** - UI **http://localhost:8501** - metrics **http://localhost:8001/metrics** |
 | **Docs** | [Design document](docs/DESIGN.md) - [Slides](docs/Payment_Ops_Intelligence.pptx) |
 
+## Business use case
+| | |
+|---|---|
+| **Problem** | Payment operations teams investigate failed, delayed and duplicate payments across ERP, payment gateway, bank-file (ACH / wire) and SFTP interfaces. Root causes are buried in incident tickets, monitoring reports and runbooks; the same issues recur, and month-end pressure hides trends. |
+| **What the assistant does** | Finds similar past incidents, explains the probable root cause with cited evidence, recommends runbook actions, measures trends with real numbers (pandas, not the LLM) and writes role-tailored summaries. **Read-only**: it never releases, cancels or edits payments or bank details. |
+| **Value (pilot targets)** | Shorter time to root cause, fewer repeat incidents, earlier detection of rising failure types, consistent leadership reporting. These are targets to measure in a pilot, not prototype results. |
+
+## Who uses it
+| User | Typical question | Role (`payops/roles.yaml`) | Demo API key |
+|---|---|---|---|
+| Payment operations analyst | "Why was the ACH file rejected?" | `payment_analyst` - all intents | `analyst-demo-key` |
+| Payment operations manager | "What should we do to stop duplicate vendor payments?" | `operations_manager` - all intents | `manager-demo-key` |
+| Finance / operations executive | "Give leadership a summary of payment operations health" | `executive` - trend, summary | `exec-demo-key` |
+| Internal auditor | "Find incidents involving vendor bank-detail changes" | `auditor` - search, trend, summary (no recommendations) | `auditor-demo-key` |
+| Contracted IT support engineer | "Why do gateway calls time out at month-end?" | `support_engineer` - search, RCA; **amounts masked** | `support-demo-key` |
+
+The UI has a role selector; the API takes the key in the `X-API-Key` header. Requests outside a role's
+permissions return `outcome: denied` with the allowed intents.
+
+## Tech stack
+| Layer | Technology |
+|---|---|
+| Language | Python 3.12 |
+| Orchestration | LangGraph 1.2 - supervisor + Intent, Search, RCA, Recommendation, Trend, Summary agents |
+| LLM framework | LangChain core 1.6, langchain-ollama 1.1 (structured output for intent) |
+| Models | Ollama 0.40: `llama3.2` (3B) for reasoning, `nomic-embed-text` for embeddings; Amazon Bedrock by configuration |
+| Retrieval | ChromaDB 1.5 (collections `incidents`, `knowledge`) + in-process BM25, fused with RRF; metadata filters |
+| Extraction | csv (one chunk per incident), BeautifulSoup 4.15 (HTML monitoring reports), Markdown runbook |
+| Analytics | pandas 3.0 (trend, month-end share, MTTR) |
+| API / UI | FastAPI 0.143 + Uvicorn 0.54 (REST, `X-API-Key` roles), Streamlit 1.65 |
+| Evaluation | Labelled datasets + `eval/run_eval.py`, RAGAS 0.4.3, LangSmith experiments |
+| Monitoring | LangSmith 0.14 tracing + feedback, Prometheus-format `/metrics`, JSONL audit log |
+| Quality | pytest 9.1 (fake LLM, no model needed), ruff 0.17 |
+
 ## What it does
 
 | Ask | Agents that run | Example |

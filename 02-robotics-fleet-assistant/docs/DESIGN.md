@@ -8,6 +8,9 @@ navigation) look alike on the console, maintenance is calendar-based, workload i
 are compiled by hand. The assistant must diagnose, predict, rebalance and summarise - safely and with numbers
 that come from data.
 
+**Users:** robotics maintenance technicians, floor shift leads, fleet managers, site leadership and contract
+technicians limited to one zone - see section 5 and the [README](../README.md#who-uses-it).
+
 ## 2. Architecture
 ```
 CLI / FastAPI :8002 / Streamlit :8502 -> FleetAssistant.ask(question, role)

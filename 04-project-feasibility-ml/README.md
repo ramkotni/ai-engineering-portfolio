@@ -15,6 +15,33 @@ LangGraph agent grounded in a delivery playbook.
 | **Test URLs** | API **http://localhost:8004/docs** - UI **http://localhost:8504** - metrics **http://localhost:8004/metrics** |
 | **Docs** | [Design document](docs/DESIGN.md) - [Slides](docs/Project_Feasibility_ML.pptx) |
 
+## Business use case
+| | |
+|---|---|
+| **Problem** | A PMO receives project proposals and decides which to fund. Decisions depend on the reviewer, so they vary, and risky projects (low technology readiness, thin resourcing, many dependencies) are approved and then slip. Years of historical project outcomes exist but are not used. |
+| **What it does** | Predicts the probability that a project is delivered successfully, explains the drivers, flags unusual inputs, monitors input drift and - optionally - turns the drivers into advice grounded in a delivery playbook. |
+| **Value (pilot targets)** | Consistent, explainable intake decisions; mitigation planned before kickoff; a model that is monitored rather than trusted blindly. Targets to measure in a pilot, not prototype results. |
+
+## Who uses it
+| User | What they do | Role (`feasibility/roles.yaml`) | Demo API key |
+|---|---|---|---|
+| Project manager | Scores a proposal and reads the advice | `project_manager` - predict, advise | `pm-demo-key` |
+| Portfolio director / PMO | Scores the whole intake batch | `portfolio_director` - predict, advise, batch | `director-demo-key` |
+| Data scientist (model owner) | Checks metrics and drift, retrains | `data_scientist` - predict, batch, model, drift, retrain | `ds-demo-key` |
+| Stakeholder (read-only) | Sees the feasibility score only | `stakeholder_viewer` - predict | `viewer-demo-key` |
+
+## Tech stack
+| Layer | Technology |
+|---|---|
+| Language | Python 3.12 |
+| ML | scikit-learn 1.9 Pipeline (custom feature transformer, ColumnTransformer, tuned Logistic Regression; RF / GB / SVM compared), pandas 3.0, numpy 2.5, joblib 1.6 |
+| Explainability and monitoring | Coefficient-based driver explanations, out-of-distribution flags, PSI drift against training histograms, model card JSON |
+| Advisor (optional) | LangGraph 1.2 workflow, BM25 retrieval over the delivery playbook, Ollama `llama3.2` via langchain-ollama 1.1, numeric grounding |
+| API / UI | FastAPI 0.143 + Uvicorn 0.54 (REST, `X-API-Key` roles), Streamlit 1.65 |
+| Evaluation | Cross-validation, hold-out test (ROC-AUC, PR-AUC, F1, Brier), `eval/run_eval.py` |
+| Monitoring | Prometheus-format `/metrics` (predictions by risk band, OOD inputs, drift), JSONL audit log, LangSmith for the advisor |
+| Quality | pytest 9.1, ruff 0.17 |
+
 ## Sample data (synthetic, committed) - regenerate with `python data/generate_data.py`
 - `data/raw/projects.csv` - 1,212 historical projects generated from a hidden logistic process, with planted
   data problems: ~4% missing values, 8 budgets entered x1000, 6 invalid TRL codes, 12 duplicate rows,
