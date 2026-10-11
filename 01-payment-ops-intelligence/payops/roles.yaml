@@ -1,0 +1,35 @@
+# Sample roles (RBAC). API callers send X-API-Key; the demo keys below map to roles.
+# In production, map SSO groups to these roles instead of static keys.
+roles:
+  payment_analyst:
+    description: Investigates failed payments day to day.
+    intents: [search, rca, recommendation, trend, summary]
+    can_view_amounts: true
+    summary_style: operational
+  operations_manager:
+    description: Owns payment operations; full access.
+    intents: [search, rca, recommendation, trend, summary]
+    can_view_amounts: true
+    summary_style: operational
+  executive:
+    description: Leadership - trends and summaries only.
+    intents: [trend, summary]
+    can_view_amounts: true
+    summary_style: executive
+  auditor:
+    description: Internal audit - read-only evidence, no recommendations.
+    intents: [search, trend, summary]
+    can_view_amounts: true
+    summary_style: operational
+  support_engineer:
+    description: Contracted IT support - technical RCA without financial amounts.
+    intents: [search, rca]
+    can_view_amounts: false
+    summary_style: operational
+
+demo_api_keys:
+  analyst-demo-key: payment_analyst
+  manager-demo-key: operations_manager
+  exec-demo-key: executive
+  auditor-demo-key: auditor
+  support-demo-key: support_engineer

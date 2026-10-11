@@ -1,0 +1,9 @@
+project_id,project_type,region,complexity,budget_usd,timeline_weeks,tech_readiness,resource_availability,dependency_count,team_experience_years,stakeholder_count
+PRJ-NEW-1,application,americas,3,471000.0,87,9,0.55,2,7.0,3
+PRJ-NEW-2,integration,emea,4,1206000.0,16,4,0.79,11,6.5,16
+PRJ-NEW-3,integration,apj,5,799000.0,27,9,0.64,3,10.4,23
+PRJ-NEW-4,ai_ml,emea,4,480000.0,48,6,0.68,5,2.0,9
+PRJ-NEW-5,infrastructure,americas,10,439000.0,98,3,0.4,1,3.4,13
+PRJ-NEW-6,data_platform,apj,9,1075000.0,27,8,0.63,8,7.6,16
+PRJ-NEW-7,application,americas,1,1605000.0,76,6,0.89,2,4.4,18
+PRJ-NEW-8,data_platform,americas,2,638000.0,84,5,0.87,7,4.4,21

@@ -1,0 +1,21 @@
+{"question": "Why does R-1007 keep returning to the charger?", "intent": "robot_diagnostics"}
+{"question": "R-1012 shows error MOT-310, what is wrong?", "intent": "robot_diagnostics"}
+{"question": "Diagnose the bumper sensor fault on R-1020", "intent": "robot_diagnostics"}
+{"question": "Robots in the pick zone keep losing Wi-Fi", "intent": "navigation_issues"}
+{"question": "Why are robots getting stuck at intersections after the firmware update?", "intent": "navigation_issues"}
+{"question": "R-1004 lost localisation at a pick face", "intent": "navigation_issues"}
+{"question": "Which robots have degrading battery health?", "intent": "battery_analysis"}
+{"question": "Show battery degradation for R-1015", "intent": "battery_analysis"}
+{"question": "Are any battery packs close to replacement?", "intent": "battery_analysis"}
+{"question": "Which robots should get proactive maintenance next week?", "intent": "predictive_maintenance"}
+{"question": "Which robots are at risk of failing soon?", "intent": "predictive_maintenance"}
+{"question": "What maintenance should we schedule for the fleet?", "intent": "predictive_maintenance"}
+{"question": "Rebalance the workload in Z3, some robots are overloaded", "intent": "task_assignment"}
+{"question": "Which tasks should we redistribute to underused robots?", "intent": "task_assignment"}
+{"question": "How should we balance task assignment across the pick zone?", "intent": "task_assignment"}
+{"question": "How many robots are active right now?", "intent": "fleet_status"}
+{"question": "What is the fleet status per zone?", "intent": "fleet_status"}
+{"question": "Which robots are down?", "intent": "fleet_status"}
+{"question": "Give me the daily health report for the site", "intent": "operational_summary"}
+{"question": "Summarize warehouse robot operations for leadership", "intent": "operational_summary"}
+{"question": "Executive overview of the robotics fleet", "intent": "operational_summary"}

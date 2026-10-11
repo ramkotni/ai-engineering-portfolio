@@ -1,0 +1,17 @@
+{
+  "DEV-2026-014_img1": {
+    "sha256": "719d6e674364bbe0969488d363ee72f49369c4a7e59f5687026315d42f67b602",
+    "model": "gemma3:4b",
+    "caption": "Okay, here's the transcription and description of the image:\n\n**Text:**\n\nFigure 3 - Shipment SHP-88213 data logger, lot LOT-24117\n\npeak 12.6 C at 14:40\n\nTime on tarmac (Memphis): 11:00 - 17:00; cumulative time above 8 C: 3 h 20 min\n\n**Description:**\n\nThe figure is a line graph illustrating the temperature fluctuations recorded by a data logger (SHP-88213, lot LOT-24117) during a shipment from Memphis. The x-axis represents time on tarmac, ranging from 11:00 to 17:00, and the y-axis shows temperature in degrees Celsius (C). The peak temperature recorded was 12.6\u00b0C at 14:40, indicating a maximum temperature reached during the shipment. The cumulative time the temperature remained above 8\u00b0C was 3 hours and 20 minutes, demonstrating the duration of exposure to elevated temperatures."
+  },
+  "SOP-CC-001_p1_img1": {
+    "sha256": "b3e7974164bc4ce2906121d0b08c31daaa1e84e57403e1c811c3fe61d3b83417",
+    "model": "gemma3:4b",
+    "caption": "Okay, here's the transcription and description of the image you provided:\n\n**Text:**\n\nFigure 1 - Temperature Excursion Decision Flow (2-8 C products)\nData logger alarm:\ntemperature outside 2-8 C\nNO\nExcursion above 8 C for\nmore than 2 hours cumulative?\nYES\nQuarantine (HOLD)\nnotify QA within 4 hours\nAny reading above 25 C\nor frozen (below 0 C)?\nYES: reject lot | NO: stability review by QA\n\n**Description:**\n\nThe figure illustrates a decision flow for managing temperature excursions affecting 2-8\u00b0C products within a pharmaceutical supply chain. It begins with a data logger alarm indicating a temperature outside the acceptable 2-8\u00b0C range. If an excursion exceeding 8\u00b0C occurs for more than 2 hours cumulatively, the product is quarantined (held) and QA is notified within 4 hours.  Further evaluation is then conducted to determine if any readings were above 25\u00b0C or if the product was frozen (below 0\u00b0C), and if either of these conditions are met, the lot is rejected, followed by a stability review by QA."
+  },
+  "SOP-CC-001_p3_img1": {
+    "sha256": "a1b18f9123654b3bdb85e4073976b2869c31e36be944275667fc22e125ef195e",
+    "model": "gemma3:4b",
+    "caption": "Okay, here's the transcription and description of the image:\n\n**Text:**\n\nFigure 2 - Cold Chain Distribution Network\n\nLane L1: 1 day, PCM shipper 96h\nLane L2: 2 days, PCM shipper 120h\nLane L3: 1 day, active container\n\nAll lanes: data logger every 10 minutes; summer Jun-Sep use +20% coolant mass.\n\n**Description:**\n\nThe figure illustrates a cold chain distribution network for a pharmaceutical product, showing the flow of goods between four locations: a Manufacturing Site in Durham, NC; a Central DC in Memphis, TN; a West Hub in Reno, NV; and an East Hub in Allentown, PA.  Three distinct lanes (L1, L2, and L3) are depicted, each with a specified transportation time and method \u2013 Lane L1 uses a PCM shipper for 96 hours, Lane L2 uses a PCM shipper for 120 hours, and Lane L3 uses an active container for 1 day.  Data loggers record information every 10 minutes, and during the summer months (June-September), a 20% increase in coolant mass is utilized for the summer lanes."
+  }
+}

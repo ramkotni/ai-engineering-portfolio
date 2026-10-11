@@ -1,0 +1,18 @@
+# Project Feasibility Prediction - tested with Python 3.12
+scikit-learn>=1.5
+pandas>=2.2
+numpy>=1.26
+joblib>=1.4
+pydantic-settings>=2.15
+python-dotenv>=1.0
+PyYAML>=6.0
+fastapi>=0.140
+uvicorn>=0.50
+httpx>=0.27
+streamlit>=1.40
+pytest>=9.0
+# advisor agent (optional)
+langgraph>=1.2
+langchain-core>=1.6
+langchain-ollama>=1.1
+langsmith>=0.14

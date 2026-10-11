@@ -1,0 +1,25 @@
+{
+  "intent": {
+    "mode": "keyword",
+    "questions": 22,
+    "accuracy": 1.0,
+    "category_accuracy": 0.955
+  },
+  "retrieval": {
+    "questions": 8,
+    "top_k": 6,
+    "hit_rate": 1.0,
+    "mrr": 1.0,
+    "precision_at_k": 0.833
+  },
+  "guardrails": {
+    "cases": 12,
+    "block_precision": 1.0,
+    "block_recall": 1.0
+  },
+  "analytics": {
+    "checks": 7,
+    "passed": 7,
+    "duplicate_trend_detected": true
+  }
+}

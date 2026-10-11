@@ -1,0 +1,22 @@
+{"question": "Why was the ACH file rejected by the bank this morning?", "intent": "rca", "category": "bank_file_rejection"}
+{"question": "What caused the duplicate wire to a vendor last week?", "intent": "rca", "category": "duplicate_payment"}
+{"question": "Why do bank API timeouts keep happening during the payment run?", "intent": "rca", "category": "payment_timeout"}
+{"question": "Root cause of the R03 returns for a newly onboarded vendor?", "intent": "rca", "category": "invalid_routing_number"}
+{"question": "Why does the settlement total not match the general ledger?", "intent": "rca", "category": "reconciliation_mismatch"}
+{"question": "Why are vendors being paid twice and what should we do about it?", "intent": "rca", "category": "duplicate_payment"}
+{"question": "What should we do to prevent settlement from missing the bank cut-off?", "intent": "recommendation", "category": "settlement_delay"}
+{"question": "Recommend actions to stop bank file rejections", "intent": "recommendation", "category": "bank_file_rejection"}
+{"question": "How do we avoid another SFTP certificate expiry outage?", "intent": "recommendation", "category": "credential_expiry"}
+{"question": "What actions should we take for invalid routing numbers?", "intent": "recommendation", "category": "invalid_routing_number"}
+{"question": "Are duplicate payments increasing month over month?", "intent": "trend", "category": "duplicate_payment"}
+{"question": "How many payment timeouts did we have each month?", "intent": "trend", "category": "payment_timeout"}
+{"question": "Show the trend of Sev1 and Sev2 incidents over time", "intent": "trend", "category": null}
+{"question": "Which failure categories are rising recently?", "intent": "trend", "category": null}
+{"question": "Is there a recurring pattern in payment timeouts?", "intent": "trend", "category": "payment_timeout"}
+{"question": "Give leadership a summary of payment operations health", "intent": "summary", "category": null}
+{"question": "Summarize September payment incidents for the operations team", "intent": "summary", "category": null}
+{"question": "Executive overview of payment failures this quarter", "intent": "summary", "category": null}
+{"question": "Find past incidents like a wire rejected for a bad routing number", "intent": "search", "category": "invalid_routing_number"}
+{"question": "Show similar incidents to a reconciliation variance caused by rounding", "intent": "search", "category": "reconciliation_mismatch"}
+{"question": "List past incidents involving the SFTP certificate", "intent": "search", "category": "credential_expiry"}
+{"question": "Search for incidents where settlement ran late", "intent": "search", "category": "settlement_delay"}

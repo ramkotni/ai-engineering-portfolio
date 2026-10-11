@@ -1,0 +1,103 @@
+{
+  "baseline": {
+    "top_k": 6,
+    "mode": "hybrid",
+    "context_precision": 0.789,
+    "context_recall": 0.771
+  },
+  "sweep": [
+    {
+      "top_k": 3,
+      "mode": "vector",
+      "context_precision": 0.853,
+      "context_recall": 0.714,
+      "f1": 0.777
+    },
+    {
+      "top_k": 6,
+      "mode": "vector",
+      "context_precision": 0.806,
+      "context_recall": 0.756,
+      "f1": 0.78
+    },
+    {
+      "top_k": 10,
+      "mode": "vector",
+      "context_precision": 0.774,
+      "context_recall": 0.789,
+      "f1": 0.781
+    },
+    {
+      "top_k": 3,
+      "mode": "bm25",
+      "context_precision": 0.665,
+      "context_recall": 0.534,
+      "f1": 0.592
+    },
+    {
+      "top_k": 6,
+      "mode": "bm25",
+      "context_precision": 0.66,
+      "context_recall": 0.642,
+      "f1": 0.651
+    },
+    {
+      "top_k": 10,
+      "mode": "bm25",
+      "context_precision": 0.626,
+      "context_recall": 0.709,
+      "f1": 0.665
+    },
+    {
+      "top_k": 3,
+      "mode": "hybrid",
+      "context_precision": 0.841,
+      "context_recall": 0.699,
+      "f1": 0.763
+    },
+    {
+      "top_k": 6,
+      "mode": "hybrid",
+      "context_precision": 0.789,
+      "context_recall": 0.771,
+      "f1": 0.78
+    },
+    {
+      "top_k": 10,
+      "mode": "hybrid",
+      "context_precision": 0.758,
+      "context_recall": 0.794,
+      "f1": 0.776
+    }
+  ],
+  "recommended": {
+    "top_k": 6,
+    "mode": "hybrid",
+    "context_precision": 0.789,
+    "context_recall": 0.771,
+    "f1": 0.78,
+    "note": "best alternative within 0.01 F1 of current settings - keep current"
+  },
+  "llm_judged": [
+    {
+      "question": "Why are vendors being paid twice?",
+      "faithfulness": null,
+      "faithfulness_error": "InstructorRetryException",
+      "llm_context_recall": 1.0,
+      "context_precision": 0.957,
+      "context_recall": 0.739,
+      "rouge_l": 0.124,
+      "latency_ms": 158285
+    },
+    {
+      "question": "Why was the ACH file rejected by the bank?",
+      "faithfulness": null,
+      "faithfulness_error": "InstructorRetryException",
+      "llm_context_recall": 1.0,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "rouge_l": 0.232,
+      "latency_ms": 142373
+    }
+  ]
+}

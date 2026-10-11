@@ -1,0 +1,596 @@
+{
+  "summary": {
+    "mode": "keyword",
+    "questions": 28,
+    "model": null,
+    "routing_accuracy": 0.821,
+    "keyword_router_accuracy": 0.821,
+    "per_source_accuracy": {
+      "maintenance": 0.8,
+      "safety": 0.75,
+      "quality": 0.875,
+      "out_of_scope": 1.0
+    },
+    "out_of_scope_detected": 2,
+    "retrieval_hit_rate": 1.0,
+    "mrr": 0.974,
+    "avg_route_ms": 0,
+    "guardrails": {
+      "cases": 16,
+      "block_precision": 1.0,
+      "block_recall": 1.0,
+      "misclassified": []
+    }
+  },
+  "results": [
+    {
+      "question": "How do I replace the main cylinder seal on the HP-200 press?",
+      "expected_source": "maintenance",
+      "expected_docs": [
+        "MM-HP-200"
+      ],
+      "expected_facts": [
+        "210"
+      ],
+      "router": "keyword",
+      "predicted_source": "maintenance",
+      "confidence": 0.9,
+      "keyword_route": "maintenance",
+      "searched": [
+        "maintenance",
+        "safety"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "What torque do the gland retainer bolts get?",
+      "expected_source": "maintenance",
+      "expected_docs": [
+        "MM-HP-200",
+        "MM-HP-200-TS"
+      ],
+      "expected_facts": [
+        "210"
+      ],
+      "router": "keyword",
+      "predicted_source": "maintenance",
+      "confidence": 0.9,
+      "keyword_route": "maintenance",
+      "searched": [
+        "maintenance"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "How often is the return-line filter changed on the 200 ton press?",
+      "expected_source": "maintenance",
+      "expected_docs": [
+        "MM-HP-200"
+      ],
+      "expected_facts": [
+        "1,000"
+      ],
+      "router": "keyword",
+      "predicted_source": "maintenance",
+      "confidence": 0.9,
+      "keyword_route": "maintenance",
+      "searched": [
+        "maintenance"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "The press ram drifts down when stopped. What should we check?",
+      "expected_source": "maintenance",
+      "expected_docs": [
+        "MM-HP-200"
+      ],
+      "expected_facts": [
+        "counterbalance"
+      ],
+      "router": "keyword",
+      "predicted_source": "safety",
+      "confidence": 0.7,
+      "keyword_route": "safety",
+      "searched": [
+        "safety",
+        "maintenance"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "What does alarm 3007 mean on the VMC-500?",
+      "expected_source": "maintenance",
+      "expected_docs": [
+        "MM-VMC-500"
+      ],
+      "expected_facts": [
+        "tool changer"
+      ],
+      "router": "keyword",
+      "predicted_source": "maintenance",
+      "confidence": 0.9,
+      "keyword_route": "maintenance",
+      "searched": [
+        "maintenance"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "How long is the spindle warm-up and when is it required?",
+      "expected_source": "maintenance",
+      "expected_docs": [
+        "MM-VMC-500"
+      ],
+      "expected_facts": [
+        "10 minutes"
+      ],
+      "router": "keyword",
+      "predicted_source": "maintenance",
+      "confidence": 0.9,
+      "keyword_route": "maintenance",
+      "searched": [
+        "maintenance"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "What coolant concentration should the machining centers run at?",
+      "expected_source": "maintenance",
+      "expected_docs": [
+        "MM-VMC-500",
+        "SOP-SAF-002"
+      ],
+      "expected_facts": [
+        "6-8%"
+      ],
+      "router": "keyword",
+      "predicted_source": "out_of_scope",
+      "confidence": 0.3,
+      "keyword_route": "out_of_scope",
+      "searched": [
+        "safety",
+        "maintenance",
+        "quality"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "How do I adjust belt tracking on the CV-3 conveyor?",
+      "expected_source": "maintenance",
+      "expected_docs": [
+        "MM-CV-3"
+      ],
+      "expected_facts": [
+        "quarter turn"
+      ],
+      "router": "keyword",
+      "predicted_source": "maintenance",
+      "confidence": 0.9,
+      "keyword_route": "maintenance",
+      "searched": [
+        "maintenance",
+        "safety"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "Compressor shut down on high discharge temperature, what now?",
+      "expected_source": "maintenance",
+      "expected_docs": [
+        "MM-AC-75"
+      ],
+      "expected_facts": [
+        "110"
+      ],
+      "router": "keyword",
+      "predicted_source": "maintenance",
+      "confidence": 0.9,
+      "keyword_route": "maintenance",
+      "searched": [
+        "maintenance"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "What torque for the HP-200 cylinder mounting bolts?",
+      "expected_source": "maintenance",
+      "expected_docs": [
+        "MM-HP-200-TS"
+      ],
+      "expected_facts": [
+        "650"
+      ],
+      "router": "keyword",
+      "predicted_source": "maintenance",
+      "confidence": 0.9,
+      "keyword_route": "maintenance",
+      "searched": [
+        "maintenance"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "Who is allowed to remove another worker's lock?",
+      "expected_source": "safety",
+      "expected_docs": [
+        "SOP-SAF-001"
+      ],
+      "expected_facts": [
+        "EHS Manager"
+      ],
+      "router": "keyword",
+      "predicted_source": "out_of_scope",
+      "confidence": 0.3,
+      "keyword_route": "out_of_scope",
+      "searched": [
+        "maintenance",
+        "quality",
+        "safety"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 0.3333333333333333,
+      "route_ms": 0
+    },
+    {
+      "question": "How do we hand over a lockout at shift change?",
+      "expected_source": "safety",
+      "expected_docs": [
+        "SOP-SAF-001"
+      ],
+      "expected_facts": [
+        "lock-on-lock"
+      ],
+      "router": "keyword",
+      "predicted_source": "safety",
+      "confidence": 0.9,
+      "keyword_route": "safety",
+      "searched": [
+        "safety"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "What PPE is required at the sodium hydroxide parts washer?",
+      "expected_source": "safety",
+      "expected_docs": [
+        "SOP-SAF-003"
+      ],
+      "expected_facts": [
+        "neoprene"
+      ],
+      "router": "keyword",
+      "predicted_source": "safety",
+      "confidence": 0.9,
+      "keyword_route": "safety",
+      "searched": [
+        "safety"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "What PPE is needed for electrical work above 50 V?",
+      "expected_source": "safety",
+      "expected_docs": [
+        "SOP-SAF-003"
+      ],
+      "expected_facts": [
+        "arc-rated"
+      ],
+      "router": "keyword",
+      "predicted_source": "safety",
+      "confidence": 0.9,
+      "keyword_route": "safety",
+      "searched": [
+        "safety"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "Can operators wear gloves while running the CNC?",
+      "expected_source": "safety",
+      "expected_docs": [
+        "SOP-SAF-003"
+      ],
+      "expected_facts": [
+        "spindle"
+      ],
+      "router": "keyword",
+      "predicted_source": "safety",
+      "confidence": 0.7,
+      "keyword_route": "safety",
+      "searched": [
+        "safety",
+        "maintenance"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "About 10 gallons of solvent spilled near line 3, what do I do?",
+      "expected_source": "safety",
+      "expected_docs": [
+        "SOP-SAF-002"
+      ],
+      "expected_facts": [
+        "5555"
+      ],
+      "router": "keyword",
+      "predicted_source": "safety",
+      "confidence": 0.9,
+      "keyword_route": "safety",
+      "searched": [
+        "safety"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "Where is the evacuation assembly point?",
+      "expected_source": "safety",
+      "expected_docs": [
+        "SOP-SAF-004"
+      ],
+      "expected_facts": [
+        "Parking Lot B"
+      ],
+      "router": "keyword",
+      "predicted_source": "safety",
+      "confidence": 0.9,
+      "keyword_route": "safety",
+      "searched": [
+        "safety"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "Someone got coolant in their eye",
+      "expected_source": "safety",
+      "expected_docs": [
+        "SOP-SAF-002"
+      ],
+      "expected_facts": [
+        "15 minutes"
+      ],
+      "router": "keyword",
+      "predicted_source": "out_of_scope",
+      "confidence": 0.3,
+      "keyword_route": "out_of_scope",
+      "searched": [
+        "safety",
+        "maintenance",
+        "quality"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "What sample size do we pull for an incoming lot of 500 pieces?",
+      "expected_source": "quality",
+      "expected_docs": [
+        "QCS-001"
+      ],
+      "expected_facts": [
+        "50"
+      ],
+      "router": "keyword",
+      "predicted_source": "quality",
+      "confidence": 0.9,
+      "keyword_route": "quality",
+      "searched": [
+        "quality"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "When is a first article inspection required?",
+      "expected_source": "quality",
+      "expected_docs": [
+        "QCS-001"
+      ],
+      "expected_facts": [
+        "part number"
+      ],
+      "router": "keyword",
+      "predicted_source": "quality",
+      "confidence": 0.9,
+      "keyword_route": "quality",
+      "searched": [
+        "quality"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "Eight points in a row are above the center line on my X-bar chart. Is that a problem?",
+      "expected_source": "quality",
+      "expected_docs": [
+        "QCS-002"
+      ],
+      "expected_facts": [],
+      "router": "keyword",
+      "predicted_source": "out_of_scope",
+      "confidence": 0.3,
+      "keyword_route": "out_of_scope",
+      "searched": [
+        "safety",
+        "maintenance",
+        "quality"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "What minimum Cpk do we need on CTQ dimensions in production?",
+      "expected_source": "quality",
+      "expected_docs": [
+        "QCS-002"
+      ],
+      "expected_facts": [
+        "1.33"
+      ],
+      "router": "keyword",
+      "predicted_source": "quality",
+      "confidence": 0.9,
+      "keyword_route": "quality",
+      "searched": [
+        "quality"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "Can I rework rejected parts without MRB?",
+      "expected_source": "quality",
+      "expected_docs": [
+        "QCS-003"
+      ],
+      "expected_facts": [
+        "MRB"
+      ],
+      "router": "keyword",
+      "predicted_source": "quality",
+      "confidence": 0.9,
+      "keyword_route": "quality",
+      "searched": [
+        "quality"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "When do we have to open a CAPA?",
+      "expected_source": "quality",
+      "expected_docs": [
+        "QCS-003"
+      ],
+      "expected_facts": [
+        "30 days"
+      ],
+      "router": "keyword",
+      "predicted_source": "quality",
+      "confidence": 0.9,
+      "keyword_route": "quality",
+      "searched": [
+        "quality"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "A caliper failed calibration, what happens to parts it measured?",
+      "expected_source": "quality",
+      "expected_docs": [
+        "QCS-004"
+      ],
+      "expected_facts": [
+        "HOLD"
+      ],
+      "router": "keyword",
+      "predicted_source": "quality",
+      "confidence": 0.77,
+      "keyword_route": "quality",
+      "searched": [
+        "quality",
+        "safety"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "What is the acceptable Gauge R&R percentage?",
+      "expected_source": "quality",
+      "expected_docs": [
+        "QCS-004"
+      ],
+      "expected_facts": [
+        "10%"
+      ],
+      "router": "keyword",
+      "predicted_source": "quality",
+      "confidence": 0.9,
+      "keyword_route": "quality",
+      "searched": [
+        "quality"
+      ],
+      "retrieval_hit": true,
+      "reciprocal_rank": 1.0,
+      "route_ms": 0
+    },
+    {
+      "question": "What's on the cafeteria menu this week?",
+      "expected_source": "out_of_scope",
+      "expected_docs": [],
+      "expected_facts": [],
+      "router": "keyword",
+      "predicted_source": "out_of_scope",
+      "confidence": 0.3,
+      "keyword_route": "out_of_scope",
+      "searched": [
+        "safety",
+        "maintenance",
+        "quality"
+      ],
+      "retrieval_hit": null,
+      "reciprocal_rank": null,
+      "route_ms": 0
+    },
+    {
+      "question": "How do I submit my vacation request?",
+      "expected_source": "out_of_scope",
+      "expected_docs": [],
+      "expected_facts": [],
+      "router": "keyword",
+      "predicted_source": "out_of_scope",
+      "confidence": 0.3,
+      "keyword_route": "out_of_scope",
+      "searched": [
+        "safety",
+        "maintenance",
+        "quality"
+      ],
+      "retrieval_hit": null,
+      "reciprocal_rank": null,
+      "route_ms": 0
+    }
+  ]
+}

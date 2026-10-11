@@ -1,0 +1,28 @@
+{"question": "How do I replace the main cylinder seal on the HP-200 press?", "expected_source": "maintenance", "expected_docs": ["MM-HP-200"], "expected_facts": ["210"]}
+{"question": "What torque do the gland retainer bolts get?", "expected_source": "maintenance", "expected_docs": ["MM-HP-200", "MM-HP-200-TS"], "expected_facts": ["210"]}
+{"question": "How often is the return-line filter changed on the 200 ton press?", "expected_source": "maintenance", "expected_docs": ["MM-HP-200"], "expected_facts": ["1,000"]}
+{"question": "The press ram drifts down when stopped. What should we check?", "expected_source": "maintenance", "expected_docs": ["MM-HP-200"], "expected_facts": ["counterbalance"]}
+{"question": "What does alarm 3007 mean on the VMC-500?", "expected_source": "maintenance", "expected_docs": ["MM-VMC-500"], "expected_facts": ["tool changer"]}
+{"question": "How long is the spindle warm-up and when is it required?", "expected_source": "maintenance", "expected_docs": ["MM-VMC-500"], "expected_facts": ["10 minutes"]}
+{"question": "What coolant concentration should the machining centers run at?", "expected_source": "maintenance", "expected_docs": ["MM-VMC-500", "SOP-SAF-002"], "expected_facts": ["6-8%"]}
+{"question": "How do I adjust belt tracking on the CV-3 conveyor?", "expected_source": "maintenance", "expected_docs": ["MM-CV-3"], "expected_facts": ["quarter turn"]}
+{"question": "Compressor shut down on high discharge temperature, what now?", "expected_source": "maintenance", "expected_docs": ["MM-AC-75"], "expected_facts": ["110"]}
+{"question": "What torque for the HP-200 cylinder mounting bolts?", "expected_source": "maintenance", "expected_docs": ["MM-HP-200-TS"], "expected_facts": ["650"]}
+{"question": "Who is allowed to remove another worker's lock?", "expected_source": "safety", "expected_docs": ["SOP-SAF-001"], "expected_facts": ["EHS Manager"]}
+{"question": "How do we hand over a lockout at shift change?", "expected_source": "safety", "expected_docs": ["SOP-SAF-001"], "expected_facts": ["lock-on-lock"]}
+{"question": "What PPE is required at the sodium hydroxide parts washer?", "expected_source": "safety", "expected_docs": ["SOP-SAF-003"], "expected_facts": ["neoprene"]}
+{"question": "What PPE is needed for electrical work above 50 V?", "expected_source": "safety", "expected_docs": ["SOP-SAF-003"], "expected_facts": ["arc-rated"]}
+{"question": "Can operators wear gloves while running the CNC?", "expected_source": "safety", "expected_docs": ["SOP-SAF-003"], "expected_facts": ["spindle"]}
+{"question": "About 10 gallons of solvent spilled near line 3, what do I do?", "expected_source": "safety", "expected_docs": ["SOP-SAF-002"], "expected_facts": ["5555"]}
+{"question": "Where is the evacuation assembly point?", "expected_source": "safety", "expected_docs": ["SOP-SAF-004"], "expected_facts": ["Parking Lot B"]}
+{"question": "Someone got coolant in their eye", "expected_source": "safety", "expected_docs": ["SOP-SAF-002"], "expected_facts": ["15 minutes"]}
+{"question": "What sample size do we pull for an incoming lot of 500 pieces?", "expected_source": "quality", "expected_docs": ["QCS-001"], "expected_facts": ["50"]}
+{"question": "When is a first article inspection required?", "expected_source": "quality", "expected_docs": ["QCS-001"], "expected_facts": ["part number"]}
+{"question": "Eight points in a row are above the center line on my X-bar chart. Is that a problem?", "expected_source": "quality", "expected_docs": ["QCS-002"], "expected_facts": []}
+{"question": "What minimum Cpk do we need on CTQ dimensions in production?", "expected_source": "quality", "expected_docs": ["QCS-002"], "expected_facts": ["1.33"]}
+{"question": "Can I rework rejected parts without MRB?", "expected_source": "quality", "expected_docs": ["QCS-003"], "expected_facts": ["MRB"]}
+{"question": "When do we have to open a CAPA?", "expected_source": "quality", "expected_docs": ["QCS-003"], "expected_facts": ["30 days"]}
+{"question": "A caliper failed calibration, what happens to parts it measured?", "expected_source": "quality", "expected_docs": ["QCS-004"], "expected_facts": ["HOLD"]}
+{"question": "What is the acceptable Gauge R&R percentage?", "expected_source": "quality", "expected_docs": ["QCS-004"], "expected_facts": ["10%"]}
+{"question": "What's on the cafeteria menu this week?", "expected_source": "out_of_scope", "expected_docs": [], "expected_facts": []}
+{"question": "How do I submit my vacation request?", "expected_source": "out_of_scope", "expected_docs": [], "expected_facts": []}

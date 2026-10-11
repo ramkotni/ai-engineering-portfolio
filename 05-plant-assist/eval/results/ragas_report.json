@@ -1,0 +1,82 @@
+{
+  "baseline": {
+    "mode": "hybrid",
+    "top_k": 5,
+    "context_precision": 0.974,
+    "context_recall": 0.703,
+    "f1": 0.817
+  },
+  "sweep": [
+    {
+      "mode": "vector",
+      "top_k": 3,
+      "context_precision": 1.0,
+      "context_recall": 0.487,
+      "f1": 0.655
+    },
+    {
+      "mode": "vector",
+      "top_k": 5,
+      "context_precision": 0.978,
+      "context_recall": 0.739,
+      "f1": 0.842
+    },
+    {
+      "mode": "vector",
+      "top_k": 8,
+      "context_precision": 0.961,
+      "context_recall": 0.833,
+      "f1": 0.893
+    },
+    {
+      "mode": "bm25",
+      "top_k": 3,
+      "context_precision": 0.974,
+      "context_recall": 0.436,
+      "f1": 0.603
+    },
+    {
+      "mode": "bm25",
+      "top_k": 5,
+      "context_precision": 0.93,
+      "context_recall": 0.663,
+      "f1": 0.774
+    },
+    {
+      "mode": "bm25",
+      "top_k": 8,
+      "context_precision": 0.887,
+      "context_recall": 0.822,
+      "f1": 0.853
+    },
+    {
+      "mode": "hybrid",
+      "top_k": 3,
+      "context_precision": 0.994,
+      "context_recall": 0.495,
+      "f1": 0.661
+    },
+    {
+      "mode": "hybrid",
+      "top_k": 5,
+      "context_precision": 0.974,
+      "context_recall": 0.703,
+      "f1": 0.817
+    },
+    {
+      "mode": "hybrid",
+      "top_k": 8,
+      "context_precision": 0.945,
+      "context_recall": 0.844,
+      "f1": 0.891
+    }
+  ],
+  "recommended": {
+    "mode": "hybrid",
+    "top_k": 8,
+    "context_precision": 0.945,
+    "context_recall": 0.844,
+    "f1": 0.891,
+    "note": "vector-only within 0.01 F1 of hybrid - prefer hybrid for exact-term matching"
+  }
+}

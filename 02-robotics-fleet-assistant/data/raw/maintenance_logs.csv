@@ -1,0 +1,61 @@
+log_id,date,robot_id,zone,action,part,notes
+MNT-3054,2026-04-04,R-1007,Z3-Pick,wheel alignment,-,Wheel alignment completed on R-1007; post-check passed.
+MNT-3042,2026-04-08,R-1024,Z4-Pack,lidar window cleaning,-,Lidar window cleaning completed on R-1024; post-check passed.
+MNT-3053,2026-04-09,R-1010,Z2-Storage,firmware update,-,Firmware update completed on R-1010; post-check passed.
+MNT-3025,2026-04-16,R-1017,Z1-Inbound,scanner recalibration,-,Scanner recalibration completed on R-1017; post-check passed.
+MNT-3028,2026-04-19,R-1008,Z4-Pack,lidar window cleaning,-,Lidar window cleaning completed on R-1008; post-check passed.
+MNT-3059,2026-04-21,R-1017,Z1-Inbound,firmware update,-,Firmware update completed on R-1017; post-check passed.
+MNT-3043,2026-04-22,R-1033,Z1-Inbound,firmware update,-,Firmware update completed on R-1033; post-check passed.
+MNT-3058,2026-04-23,R-1020,Z4-Pack,lidar window cleaning,-,Lidar window cleaning completed on R-1020; post-check passed.
+MNT-3041,2026-05-06,R-1032,Z4-Pack,drive motor replacement,DM-750W,Drive motor replacement completed on R-1032; post-check passed.
+MNT-3055,2026-05-12,R-1030,Z2-Storage,battery pack replacement,BP-48V-20Ah,Battery pack replacement completed on R-1030; post-check passed.
+MNT-3017,2026-05-13,R-1026,Z2-Storage,firmware update,-,Firmware update completed on R-1026; post-check passed.
+MNT-3030,2026-05-13,R-1033,Z1-Inbound,scanner recalibration,-,Scanner recalibration completed on R-1033; post-check passed.
+MNT-3050,2026-05-18,R-1005,Z1-Inbound,scanner recalibration,-,Scanner recalibration completed on R-1005; post-check passed.
+MNT-3001,2026-05-28,R-1011,Z3-Pick,battery pack replacement,BP-48V-20Ah,Battery pack replacement completed on R-1011; post-check passed.
+MNT-3026,2026-05-30,R-1016,Z4-Pack,drive motor replacement,DM-750W,Drive motor replacement completed on R-1016; post-check passed.
+MNT-3048,2026-06-01,R-1028,Z4-Pack,wheel alignment,-,Wheel alignment completed on R-1028; post-check passed.
+MNT-3014,2026-06-11,R-1016,Z4-Pack,drive motor replacement,DM-750W,Drive motor replacement completed on R-1016; post-check passed.
+MNT-3019,2026-06-17,R-1004,Z4-Pack,wheel alignment,-,Wheel alignment completed on R-1004; post-check passed.
+MNT-3038,2026-06-17,R-1027,Z3-Pick,scanner recalibration,-,Scanner recalibration completed on R-1027; post-check passed.
+MNT-3045,2026-06-20,R-1016,Z4-Pack,scanner recalibration,-,Scanner recalibration completed on R-1016; post-check passed.
+MNT-3027,2026-06-22,R-1036,Z4-Pack,wheel alignment,-,Wheel alignment completed on R-1036; post-check passed.
+MNT-3009,2026-06-23,R-1005,Z1-Inbound,scanner recalibration,-,Scanner recalibration completed on R-1005; post-check passed.
+MNT-3039,2026-06-26,R-1034,Z2-Storage,lidar window cleaning,-,Lidar window cleaning completed on R-1034; post-check passed.
+MNT-3008,2026-06-27,R-1019,Z3-Pick,drive motor replacement,DM-750W,Drive motor replacement completed on R-1019; post-check passed.
+MNT-3010,2026-06-30,R-1038,Z2-Storage,battery pack replacement,BP-48V-20Ah,Battery pack replacement completed on R-1038; post-check passed.
+MNT-3003,2026-07-04,R-1010,Z2-Storage,scanner recalibration,-,Scanner recalibration completed on R-1010; post-check passed.
+MNT-3023,2026-07-05,R-1031,Z3-Pick,scanner recalibration,-,Scanner recalibration completed on R-1031; post-check passed.
+MNT-3034,2026-07-05,R-1006,Z2-Storage,lidar window cleaning,-,Lidar window cleaning completed on R-1006; post-check passed.
+MNT-3031,2026-07-07,R-1015,Z3-Pick,scanner recalibration,-,Scanner recalibration completed on R-1015; post-check passed.
+MNT-3005,2026-07-09,R-1022,Z2-Storage,battery pack replacement,BP-48V-20Ah,Battery pack replacement completed on R-1022; post-check passed.
+MNT-3035,2026-07-11,R-1036,Z4-Pack,battery pack replacement,BP-48V-20Ah,Battery pack replacement completed on R-1036; post-check passed.
+MNT-3046,2026-07-13,R-1029,Z1-Inbound,scanner recalibration,-,Scanner recalibration completed on R-1029; post-check passed.
+MNT-3002,2026-07-15,R-1029,Z1-Inbound,scanner recalibration,-,Scanner recalibration completed on R-1029; post-check passed.
+MNT-3044,2026-07-23,R-1014,Z2-Storage,battery pack replacement,BP-48V-20Ah,Battery pack replacement completed on R-1014; post-check passed.
+MNT-3036,2026-07-26,R-1016,Z4-Pack,drive motor replacement,DM-750W,Drive motor replacement completed on R-1016; post-check passed.
+MNT-3024,2026-07-27,R-1019,Z3-Pick,drive motor replacement,DM-750W,Drive motor replacement completed on R-1019; post-check passed.
+MNT-3051,2026-07-29,R-1030,Z2-Storage,scanner recalibration,-,Scanner recalibration completed on R-1030; post-check passed.
+MNT-3033,2026-07-30,R-1036,Z4-Pack,lidar window cleaning,-,Lidar window cleaning completed on R-1036; post-check passed.
+MNT-3029,2026-08-08,R-1011,Z3-Pick,battery pack replacement,BP-48V-20Ah,Battery pack replacement completed on R-1011; post-check passed.
+MNT-3015,2026-08-13,R-1033,Z1-Inbound,drive motor replacement,DM-750W,Drive motor replacement completed on R-1033; post-check passed.
+MNT-3022,2026-08-18,R-1036,Z4-Pack,lidar window cleaning,-,Lidar window cleaning completed on R-1036; post-check passed.
+MNT-3052,2026-08-22,R-1007,Z3-Pick,lidar window cleaning,-,Lidar window cleaning completed on R-1007; post-check passed.
+MNT-3013,2026-08-23,R-1019,Z3-Pick,wheel alignment,-,Wheel alignment completed on R-1019; post-check passed.
+MNT-3020,2026-08-26,R-1029,Z1-Inbound,firmware update,-,Firmware update completed on R-1029; post-check passed.
+MNT-3032,2026-08-26,R-1029,Z1-Inbound,scanner recalibration,-,Scanner recalibration completed on R-1029; post-check passed.
+MNT-3056,2026-08-29,R-1003,Z3-Pick,battery pack replacement,BP-48V-20Ah,Battery pack replacement completed on R-1003; post-check passed.
+MNT-3004,2026-08-31,R-1025,Z1-Inbound,drive motor replacement,DM-750W,Drive motor replacement completed on R-1025; post-check passed.
+MNT-3006,2026-08-31,R-1022,Z2-Storage,scanner recalibration,-,Scanner recalibration completed on R-1022; post-check passed.
+MNT-3060,2026-09-02,R-1028,Z4-Pack,wheel alignment,-,Wheel alignment completed on R-1028; post-check passed.
+MNT-3018,2026-09-10,R-1014,Z2-Storage,wheel alignment,-,Wheel alignment completed on R-1014; post-check passed.
+MNT-3040,2026-09-15,R-1018,Z2-Storage,drive motor replacement,DM-750W,Drive motor replacement completed on R-1018; post-check passed.
+MNT-3012,2026-09-17,R-1018,Z2-Storage,battery pack replacement,BP-48V-20Ah,Battery pack replacement completed on R-1018; post-check passed.
+MNT-3011,2026-09-18,R-1028,Z4-Pack,drive motor replacement,DM-750W,Drive motor replacement completed on R-1028; post-check passed.
+MNT-3021,2026-09-18,R-1019,Z3-Pick,scanner recalibration,-,Scanner recalibration completed on R-1019; post-check passed.
+MNT-3057,2026-09-21,R-1015,Z3-Pick,firmware update,-,Firmware update completed on R-1015; post-check passed.
+MNT-3047,2026-09-22,R-1002,Z2-Storage,lidar window cleaning,-,Lidar window cleaning completed on R-1002; post-check passed.
+MNT-3016,2026-09-23,R-1024,Z4-Pack,scanner recalibration,-,Scanner recalibration completed on R-1024; post-check passed.
+MNT-3037,2026-09-25,R-1037,Z1-Inbound,lidar window cleaning,-,Lidar window cleaning completed on R-1037; post-check passed.
+MNT-3007,2026-09-27,R-1013,Z1-Inbound,wheel alignment,-,Wheel alignment completed on R-1013; post-check passed.
+MNT-3049,2026-09-30,R-1038,Z2-Storage,scanner recalibration,-,Scanner recalibration completed on R-1038; post-check passed.

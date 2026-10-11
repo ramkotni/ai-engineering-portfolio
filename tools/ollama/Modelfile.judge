@@ -1,0 +1,7 @@
+# CPU-capped judge model for RAGAS on laptops without a GPU.
+# The OpenAI-compatible endpoint RAGAS uses cannot pass num_thread, so the cap lives in the model.
+#   ollama create llama3.2-judge -f tools/ollama/Modelfile.judge
+FROM llama3.2
+PARAMETER num_thread 2
+PARAMETER num_ctx 4096
+PARAMETER temperature 0

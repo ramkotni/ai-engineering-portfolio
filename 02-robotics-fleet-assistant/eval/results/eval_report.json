@@ -1,0 +1,37 @@
+{
+  "intent": {
+    "mode": "keyword",
+    "questions": 21,
+    "accuracy": 0.905,
+    "misses": [
+      "Why are robots getting stuck at intersections after the firmware update?",
+      "Which robots are at risk of failing soon?"
+    ]
+  },
+  "retrieval": {
+    "questions": 7,
+    "top_k": 10,
+    "hit_rate": 1.0,
+    "mrr": 1.0,
+    "precision_at_k": 0.843
+  },
+  "guardrails": {
+    "cases": 14,
+    "block_precision": 1.0,
+    "block_recall": 1.0
+  },
+  "analytics": {
+    "fast_battery_decline_found": [
+      "R-1007",
+      "R-1015",
+      "R-1023"
+    ],
+    "fast_battery_decline_correct": true,
+    "top_risk_robot": "R-1007",
+    "rebalance_tasks_moved": 10,
+    "rebalance_targets_underused": [
+      "R-1031",
+      "R-1035"
+    ]
+  }
+}

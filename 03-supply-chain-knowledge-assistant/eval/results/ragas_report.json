@@ -1,0 +1,32 @@
+{
+  "baseline": {
+    "top_k": 6,
+    "mode": "hybrid",
+    "context_precision": 0.888,
+    "context_recall": 0.625
+  },
+  "llm_judged": [
+    {
+      "question": "Which packaging configuration is used for lane L2?",
+      "faithfulness": null,
+      "faithfulness_error": "InstructorRetryException",
+      "llm_context_recall": 1.0,
+      "response_groundedness": 0.75,
+      "context_precision": 1.0,
+      "context_recall": 0.5,
+      "rouge_l": 0.45,
+      "latency_ms": 59176
+    },
+    {
+      "question": "How often does the data logger record temperature?",
+      "faithfulness": null,
+      "faithfulness_error": "InstructorRetryException",
+      "llm_context_recall": 1.0,
+      "response_groundedness": 0.75,
+      "context_precision": 0.7,
+      "context_recall": 0.375,
+      "rouge_l": 0.6,
+      "latency_ms": 44611
+    }
+  ]
+}

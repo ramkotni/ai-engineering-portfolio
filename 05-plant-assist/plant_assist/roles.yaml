@@ -1,0 +1,25 @@
+# Sample roles - which documentation sources each role may search.
+# Safety procedures are always searchable by everyone (safety-first policy), even if not listed.
+roles:
+  floor_supervisor:
+    description: Production floor supervisor - all plant documentation.
+    sources: [safety, maintenance, quality]
+  maintenance_technician:
+    description: Maintenance technician - equipment manuals and safety.
+    sources: [safety, maintenance]
+  quality_engineer:
+    description: Quality engineer - quality standards and safety.
+    sources: [safety, quality]
+  ehs_manager:
+    description: EHS manager - all documentation.
+    sources: [safety, maintenance, quality]
+  contractor:
+    description: On-site contractor - safety procedures only.
+    sources: [safety]
+
+demo_api_keys:
+  supervisor-demo-key: floor_supervisor
+  tech-demo-key: maintenance_technician
+  quality-demo-key: quality_engineer
+  ehs-demo-key: ehs_manager
+  contractor-demo-key: contractor

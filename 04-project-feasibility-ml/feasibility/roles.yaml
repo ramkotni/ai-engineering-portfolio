@@ -1,0 +1,20 @@
+# Sample roles - capabilities map to API endpoints.
+roles:
+  project_manager:
+    description: Submits a project for a feasibility check and reads the advice.
+    capabilities: [predict, advise]
+  portfolio_director:
+    description: Reviews the whole intake pipeline.
+    capabilities: [predict, advise, batch]
+  data_scientist:
+    description: Owns the model - metrics, drift, retraining.
+    capabilities: [predict, batch, model, drift, retrain]
+  stakeholder_viewer:
+    description: Read-only - feasibility score only, no advice or model internals.
+    capabilities: [predict]
+
+demo_api_keys:
+  pm-demo-key: project_manager
+  director-demo-key: portfolio_director
+  ds-demo-key: data_scientist
+  viewer-demo-key: stakeholder_viewer

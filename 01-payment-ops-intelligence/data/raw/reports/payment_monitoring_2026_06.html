@@ -1,0 +1,29 @@
+<!doctype html>
+<html><head><title>Payment Monitoring Report 2026-06</title></head>
+<body>
+<h1>Payment Monitoring Report - June 2026</h1>
+<p>Document ID: PAY-MON-202606 | Owner: Payment Operations | Classification: Internal</p>
+<h2>Executive Commentary</h2>
+<p>June was dominated by a bank connection outage when the SFTP client certificate expired; files were held for several hours. Certificate expiry alerting has since been added.</p>
+<h2>Incidents by System</h2>
+<table>
+<tr><th>System</th><th>Incidents</th><th>Sev1/Sev2</th><th>Avg resolution (h)</th></tr>
+<tr><td>Bank File Transfer</td><td>4</td><td>2</td><td>11.9</td></tr>
+<tr><td>Payment Gateway</td><td>2</td><td>1</td><td>22.1</td></tr>
+<tr><td>Settlement Engine</td><td>1</td><td>1</td><td>2.4</td></tr>
+<tr><td>Vendor Master</td><td>2</td><td>1</td><td>44.2</td></tr>
+</table>
+<h2>Notable Incidents</h2>
+<ul>
+<li>PAY-INC-1022 (Sev2, credential_expiry): Bank connection authentication failure.</li>
+<li>PAY-INC-1023 (Sev1, bank_file_rejection): Outbound ACH batch returned.</li>
+<li>PAY-INC-1024 (Sev2, invalid_routing_number): ACH return R03 for vendor.</li>
+<li>PAY-INC-1025 (Sev1, settlement_delay): Settlement batch delayed.</li>
+<li>PAY-INC-1026 (Sev2, duplicate_payment): Vendor paid twice.</li>
+</ul>
+<h2>Actions for Next Month</h2>
+<ul>
+<li>Track duplicate payment rate daily until idempotency keys are verified in production.</li>
+<li>Review month-end capacity with the bank before the next close.</li>
+</ul>
+</body></html>

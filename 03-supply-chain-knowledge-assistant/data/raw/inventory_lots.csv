@@ -1,0 +1,31 @@
+lot_id,product,site,quantity_vials,expiry,storage,status,excursions
+LOT-24100,Neuravex 100 mg vial,"Manufacturing Site (Durham, NC)",3905,2027-01-28,2-8 C,released,0
+LOT-24101,Cognira 50 mg vial,"Central DC (Memphis, TN)",4785,2027-02-28,2-8 C,released,0
+LOT-24102,Myelix 20 mg prefilled syringe,"West Hub (Reno, NV)",4014,2027-03-28,2-8 C,released,0
+LOT-24103,Neuravex 100 mg vial,"East Hub (Allentown, PA)",3901,2027-04-28,2-8 C,released,0
+LOT-24104,Cognira 50 mg vial,"Manufacturing Site (Durham, NC)",4360,2027-05-28,2-8 C,released,0
+LOT-24105,Myelix 20 mg prefilled syringe,"Central DC (Memphis, TN)",1755,2027-06-28,2-8 C,quarantine,1
+LOT-24106,Neuravex 100 mg vial,"West Hub (Reno, NV)",1712,2027-07-28,2-8 C,released,0
+LOT-24107,Cognira 50 mg vial,"East Hub (Allentown, PA)",4393,2027-08-28,2-8 C,released,0
+LOT-24108,Myelix 20 mg prefilled syringe,"Manufacturing Site (Durham, NC)",4097,2027-09-28,2-8 C,released,0
+LOT-24109,Neuravex 100 mg vial,"Central DC (Memphis, TN)",1725,2027-10-28,2-8 C,released,0
+LOT-24110,Cognira 50 mg vial,"West Hub (Reno, NV)",971,2027-11-28,2-8 C,released,0
+LOT-24111,Myelix 20 mg prefilled syringe,"East Hub (Allentown, PA)",3858,2027-12-28,2-8 C,released,0
+LOT-24112,Neuravex 100 mg vial,"Manufacturing Site (Durham, NC)",2685,2027-01-28,2-8 C,released,0
+LOT-24113,Cognira 50 mg vial,"Central DC (Memphis, TN)",1361,2027-02-28,2-8 C,released,0
+LOT-24114,Myelix 20 mg prefilled syringe,"West Hub (Reno, NV)",942,2027-03-28,2-8 C,released,0
+LOT-24115,Neuravex 100 mg vial,"East Hub (Allentown, PA)",4612,2027-04-28,2-8 C,released,0
+LOT-24116,Cognira 50 mg vial,"Manufacturing Site (Durham, NC)",543,2027-05-28,2-8 C,released,0
+LOT-24117,Myelix 20 mg prefilled syringe,"Central DC (Memphis, TN)",3445,2027-06-28,2-8 C,released,1
+LOT-24118,Neuravex 100 mg vial,"West Hub (Reno, NV)",3910,2027-07-28,2-8 C,released,0
+LOT-24119,Cognira 50 mg vial,"East Hub (Allentown, PA)",1490,2027-08-28,2-8 C,released,0
+LOT-24120,Myelix 20 mg prefilled syringe,"Manufacturing Site (Durham, NC)",322,2027-09-28,2-8 C,released,0
+LOT-24121,Neuravex 100 mg vial,"Central DC (Memphis, TN)",4528,2027-10-28,2-8 C,released,0
+LOT-24122,Cognira 50 mg vial,"West Hub (Reno, NV)",717,2027-11-28,2-8 C,quarantine,1
+LOT-24123,Myelix 20 mg prefilled syringe,"East Hub (Allentown, PA)",687,2027-12-28,2-8 C,released,0
+LOT-24124,Neuravex 100 mg vial,"Manufacturing Site (Durham, NC)",492,2027-01-28,2-8 C,released,0
+LOT-24125,Cognira 50 mg vial,"Central DC (Memphis, TN)",1758,2027-02-28,2-8 C,released,0
+LOT-24126,Myelix 20 mg prefilled syringe,"West Hub (Reno, NV)",2181,2027-03-28,2-8 C,released,0
+LOT-24127,Neuravex 100 mg vial,"East Hub (Allentown, PA)",446,2027-04-28,2-8 C,released,0
+LOT-24128,Cognira 50 mg vial,"Manufacturing Site (Durham, NC)",4000,2027-05-28,2-8 C,released,0
+LOT-24129,Myelix 20 mg prefilled syringe,"Central DC (Memphis, TN)",2872,2027-06-28,2-8 C,released,0

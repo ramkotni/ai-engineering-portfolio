@@ -1,0 +1,34 @@
+# Sample roles. `zones` limits which robots/events a role can see (row-level security); [] = all zones.
+roles:
+  technician:
+    description: Robotics maintenance technician - diagnoses and fixes robots.
+    intents: [robot_diagnostics, navigation_issues, battery_analysis, predictive_maintenance, fleet_status]
+    zones: []
+    summary_style: technical
+  shift_lead:
+    description: Floor shift lead - fleet status, workload and daily report.
+    intents: [fleet_status, task_assignment, operational_summary, robot_diagnostics, navigation_issues]
+    zones: []
+    summary_style: operational
+  fleet_manager:
+    description: Owns the robotics fleet - full access.
+    intents: [robot_diagnostics, fleet_status, battery_analysis, navigation_issues, predictive_maintenance, task_assignment, operational_summary]
+    zones: []
+    summary_style: operational
+  site_executive:
+    description: Site leadership - summaries and fleet status only.
+    intents: [operational_summary, fleet_status]
+    zones: []
+    summary_style: executive
+  contractor_technician:
+    description: Third-party technician contracted for the inbound zone only.
+    intents: [robot_diagnostics, battery_analysis, navigation_issues]
+    zones: [Z1-Inbound]
+    summary_style: technical
+
+demo_api_keys:
+  tech-demo-key: technician
+  lead-demo-key: shift_lead
+  manager-demo-key: fleet_manager
+  exec-demo-key: site_executive
+  contractor-demo-key: contractor_technician

@@ -1,0 +1,32 @@
+<!doctype html>
+<html><head><title>Payment Monitoring Report 2026-08</title></head>
+<body>
+<h1>Payment Monitoring Report - August 2026</h1>
+<p>Document ID: PAY-MON-202608 | Owner: Payment Operations | Classification: Internal</p>
+<h2>Executive Commentary</h2>
+<p>Gateway release v4.2 went live on 4 August. Since the release, duplicate payments have increased; early analysis points to retries without idempotency keys.</p>
+<h2>Incidents by System</h2>
+<table>
+<tr><th>System</th><th>Incidents</th><th>Sev1/Sev2</th><th>Avg resolution (h)</th></tr>
+<tr><td>Bank File Transfer</td><td>4</td><td>1</td><td>33.9</td></tr>
+<tr><td>Payment Gateway</td><td>10</td><td>6</td><td>19.7</td></tr>
+<tr><td>Settlement Engine</td><td>1</td><td>0</td><td>49.5</td></tr>
+<tr><td>Vendor Master</td><td>1</td><td>1</td><td>12.4</td></tr>
+</table>
+<h2>Notable Incidents</h2>
+<ul>
+<li>PAY-INC-1033 (Sev2, invalid_routing_number): Wire rejected for bad ABA number.</li>
+<li>PAY-INC-1034 (Sev2, bank_file_rejection): NACHA file failed bank validation.</li>
+<li>PAY-INC-1035 (Sev1, duplicate_payment): Vendor paid twice.</li>
+<li>PAY-INC-1036 (Sev2, duplicate_payment): Vendor paid twice.</li>
+<li>PAY-INC-1038 (Sev2, duplicate_payment): Duplicate wire sent to vendor.</li>
+<li>PAY-INC-1043 (Sev2, duplicate_payment): Vendor paid twice.</li>
+<li>PAY-INC-1045 (Sev2, duplicate_payment): Vendor paid twice.</li>
+<li>PAY-INC-1046 (Sev2, duplicate_payment): Duplicate payment detected in reconciliation.</li>
+</ul>
+<h2>Actions for Next Month</h2>
+<ul>
+<li>Track duplicate payment rate daily until idempotency keys are verified in production.</li>
+<li>Review month-end capacity with the bank before the next close.</li>
+</ul>
+</body></html>

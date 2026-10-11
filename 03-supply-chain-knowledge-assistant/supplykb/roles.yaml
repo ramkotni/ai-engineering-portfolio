@@ -1,0 +1,26 @@
+# Sample roles. `clearance` = highest document classification the role may retrieve
+# (public < internal < confidential). Retrieval is filtered BEFORE ranking, so restricted text never
+# reaches the prompt. `tasks` = which endpoints / workflows the role may use.
+roles:
+  supply_planner:
+    description: Plans inventory and distribution.
+    clearance: internal
+    tasks: [qa, search, summarize]
+  quality_assurance:
+    description: QA - deviations, excursions, release decisions.
+    clearance: confidential
+    tasks: [qa, search, summarize]
+  regulatory_affairs:
+    description: Regulatory submissions and inspections.
+    clearance: confidential
+    tasks: [qa, search, summarize]
+  logistics_partner:
+    description: External 3PL / carrier user - public policies only.
+    clearance: public
+    tasks: [qa, search]
+
+demo_api_keys:
+  planner-demo-key: supply_planner
+  qa-demo-key: quality_assurance
+  ra-demo-key: regulatory_affairs
+  partner-demo-key: logistics_partner

@@ -1,0 +1,24 @@
+{
+  "retrieval": {
+    "questions": 10,
+    "top_k": 6,
+    "hit_rate": 1.0,
+    "mrr": 1.0,
+    "by_source_type": {
+      "table": 1.0,
+      "text": 1.0,
+      "image": 1.0,
+      "record": 1.0
+    },
+    "image_chunk_retrieved_for_figure_questions": 1.0
+  },
+  "access_control": {
+    "queries": 10,
+    "restricted_chunks_returned_to_partner": 0
+  },
+  "guardrails": {
+    "cases": 11,
+    "block_precision": 1.0,
+    "block_recall": 1.0
+  }
+}

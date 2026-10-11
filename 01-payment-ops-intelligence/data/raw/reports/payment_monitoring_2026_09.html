@@ -1,0 +1,30 @@
+<!doctype html>
+<html><head><title>Payment Monitoring Report 2026-09</title></head>
+<body>
+<h1>Payment Monitoring Report - September 2026</h1>
+<p>Document ID: PAY-MON-202609 | Owner: Payment Operations | Classification: Internal</p>
+<h2>Executive Commentary</h2>
+<p>Duplicate payments remained elevated in September. Month-end payment timeouts recurred during the last three days of the month.</p>
+<h2>Incidents by System</h2>
+<table>
+<tr><th>System</th><th>Incidents</th><th>Sev1/Sev2</th><th>Avg resolution (h)</th></tr>
+<tr><td>Bank File Transfer</td><td>1</td><td>0</td><td>56.8</td></tr>
+<tr><td>Invoice Matching</td><td>3</td><td>1</td><td>52.6</td></tr>
+<tr><td>Payment Gateway</td><td>7</td><td>4</td><td>17.4</td></tr>
+<tr><td>Vendor Master</td><td>2</td><td>1</td><td>52.0</td></tr>
+</table>
+<h2>Notable Incidents</h2>
+<ul>
+<li>PAY-INC-1048 (Sev2, duplicate_payment): Duplicate payment detected in reconciliation.</li>
+<li>PAY-INC-1050 (Sev2, reconciliation_mismatch): Daily reconciliation mismatch.</li>
+<li>PAY-INC-1053 (Sev2, duplicate_payment): Vendor paid twice.</li>
+<li>PAY-INC-1055 (Sev2, payment_timeout): Payment run stalled on bank API.</li>
+<li>PAY-INC-1057 (Sev2, invalid_routing_number): ACH return R03 for vendor.</li>
+<li>PAY-INC-1060 (Sev2, duplicate_payment): Vendor paid twice.</li>
+</ul>
+<h2>Actions for Next Month</h2>
+<ul>
+<li>Track duplicate payment rate daily until idempotency keys are verified in production.</li>
+<li>Review month-end capacity with the bank before the next close.</li>
+</ul>
+</body></html>
