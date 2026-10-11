@@ -1,10 +1,10 @@
 # Start the API (uvicorn) and UI (Streamlit) of every project - or only the ones you list - in the background.
-#   .\scripts\start_all.ps1                    # all six projects
+#   .\scripts\start_all.ps1                    # all eight projects
 #   .\scripts\start_all.ps1 -Projects 01,06    # only projects 01 and 06
 #   .\scripts\stop_all.ps1                     # stop everything again
 # Logs go to <project>\logs\api.log / ui.log. Uses the shared portfolio .venv.
 # Ollama must be running for LLM answers (refusals, search and ML predictions work without it).
-param([string[]]$Projects = @("01", "02", "03", "04", "05", "06"))
+param([string[]]$Projects = @("01", "02", "03", "04", "05", "06", "07", "08"))
 
 . (Join-Path $PSScriptRoot "projects.ps1")
 $root = Split-Path -Parent $PSScriptRoot
@@ -13,7 +13,7 @@ if (-not (Test-Path $python)) { Write-Error "Create the shared venv first (see R
 
 function Test-Port($port) { [bool](Get-NetTCPConnection -LocalPort $port -State Listen -ErrorAction SilentlyContinue) }
 
-foreach ($n in $Projects) {
+foreach ($n in $Projects | ForEach-Object { "{0:D2}" -f [int]"$_" }) {   # "-Projects 7,08" and "07" both work
     $app = $PortfolioProjects[$n]
     if ($null -eq $app) { Write-Warning "Unknown project $n"; continue }
     $dir = Join-Path $root $app.dir

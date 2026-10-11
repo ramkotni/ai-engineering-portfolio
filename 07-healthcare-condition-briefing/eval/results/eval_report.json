@@ -1,0 +1,56 @@
+{
+  "extraction": {
+    "passed": 8,
+    "total": 8,
+    "checks": {
+      "header_footer_removed": true,
+      "two_column_order": true,
+      "table_merged_across_pages": true,
+      "all_gdmt_rows_present": true,
+      "images_with_captions": true,
+      "footnotes_tagged": true,
+      "docx_image_extracted": true,
+      "vision_captions_cached": true
+    }
+  },
+  "retrieval": {
+    "k": 6,
+    "hit_rate": 1,
+    "mrr": 0.917,
+    "by_source_type": {
+      "table": 1,
+      "table (continued page)": 1,
+      "image": 1,
+      "image / record": 1,
+      "text (two-column)": 1,
+      "text (HTML)": 1,
+      "table (HTML)": 1,
+      "record": 1,
+      "text (Word, internal)": 1,
+      "table (Word, internal)": 1,
+      "footnote": 1
+    },
+    "misses": []
+  },
+  "access_control": {
+    "internal_chunks_returned_to_public_role": 0
+  },
+  "guardrails": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "cases": 14,
+    "wrong": []
+  },
+  "registry_analytics": {
+    "hfref": {
+      "active_matches_csv": true,
+      "modality_counts_match": true,
+      "top_company_correct": true
+    },
+    "t2d": {
+      "active_matches_csv": true,
+      "modality_counts_match": true,
+      "top_company_correct": true
+    }
+  }
+}

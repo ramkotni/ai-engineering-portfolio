@@ -1,0 +1,23 @@
+[
+  {
+    "form": "8-K",
+    "filed": "2026-10-01",
+    "period": "2026-10-01",
+    "file": "8-K_2026-10-01.html",
+    "description": "Current report, items 8.01"
+  },
+  {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "period": "2026-06-30",
+    "file": "10-Q_2026-08-04.html",
+    "description": "Quarterly report for Q2 2026"
+  },
+  {
+    "form": "10-K",
+    "filed": "2026-02-24",
+    "period": "2025-12-31",
+    "file": "10-K_2026-02-24.html",
+    "description": "Annual report for fiscal 2025"
+  }
+]

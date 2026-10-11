@@ -1,6 +1,6 @@
 # AI Engineering Portfolio
 
-Six end-to-end AI engineering prototypes built with **Python, LangGraph and LangChain**, each with synthetic
+Eight end-to-end AI engineering prototypes built with **Python, LangGraph and LangChain**, each with synthetic
 sample data, a REST API, a UI, role-based access, guardrails, evaluation (RAGAS where retrieval is involved),
 LangSmith tracing, Prometheus-style metrics (01-05), tests, design documentation and slide decks.
 
@@ -16,6 +16,8 @@ LangSmith tracing, Prometheus-style metrics (01-05), tests, design documentation
 | 04 | [Project Feasibility Prediction](04-project-feasibility-ml/) | **Classical ML** + LangGraph advisor | scikit-learn pipeline, model comparison, interpretable logistic regression, PSI drift, explanations | [:8004/docs](http://localhost:8004/docs) / [:8504](http://localhost:8504) |
 | 05 | [PlantAssist](05-plant-assist/) | **Routed RAG** (agentic workflow) | Routes to safety / maintenance / quality docs, safety-first policy, numeric grounding, AWS Bedrock path | [:8005/docs](http://localhost:8005/docs) / [:8505](http://localhost:8505) |
 | 06 | [Health Member Services Copilot](06-health-member-services-copilot/) | **Multi-agent** (supervisor + policy RAG + claims agent) with critic loop and session memory | Cited benefit answers, claim-denial explanations, member-scoped claim authorization, PII redaction before the LLM, Bedrock Guardrails, **AWS Bedrock AgentCore** deploy path | [:8080](http://localhost:8080) (API + chat UI) |
+| 07 | [Condition Briefing Assistant](07-healthcare-condition-briefing/) | **Parallel section agents** + RAG over a **complex PDF** | Healthcare scenario: structured briefing (standard of care, emerging treatments, key companies / institutions); two-column PDF, page-spanning table and figure extraction with vision captions; live ClinicalTrials.gov; one-slide pitch | [:8007/docs](http://localhost:8007/docs) / [:8507](http://localhost:8507) |
+| 08 | [Stock Briefing Assistant](08-finance-stock-briefing/) | **Parallel data agents** + RAG over SEC filings | Finance scenario: quote + key financials (XBRL) + cited 10-K / 10-Q / 8-K summary; EDGAR HTML parser; compliance filter; live Yahoo Finance + SEC EDGAR; one-slide pitch | [:8008/docs](http://localhost:8008/docs) / [:8508](http://localhost:8508) |
 
 ## Business use cases and users
 | # | Business problem | Who uses it (sample roles) |
@@ -26,6 +28,8 @@ LangSmith tracing, Prometheus-style metrics (01-05), tests, design documentation
 | 04 | Inconsistent, reviewer-dependent funding decisions for new projects; risky projects approved and then slipping | Project managers, portfolio directors / PMO, the data scientist who owns the model, read-only stakeholders |
 | 05 | Floor supervisors who know the question but not which binder (safety, maintenance, quality) holds the answer | Floor supervisors, maintenance technicians, quality engineers, EHS managers, contractors (safety only) |
 | 06 | High volume of repetitive benefit and claim-denial questions in health-plan member services, with PHI that must stay protected | Plan members (portal / app chat, own claims only), member-services representatives, portal backends via API |
+| 07 | Strategy teams spend days assembling the standard of care, pipeline and key players for each condition from complex PDFs, internal briefs and registries | Strategy analysts, service-line directors, executives, a physician advisor, external consultants (public sources only) |
+| 08 | Advisors must get up to speed on a stock before a client call without reading 100-page filings, and without straying into recommendations | Financial advisors, research analysts, compliance officers, client-service associates (quotes only), advisor trainees |
 
 Each project README has a **Business use case**, **Who uses it** (user, typical question, role, demo API key) and
 **Tech stack** section. Projects 01-05 have a `docs/DESIGN.md` with the full design rationale; 06 documents its design
@@ -39,19 +43,20 @@ in its README, slides (with a code walkthrough) and AWS deploy guide.
 | LLM framework | LangChain core 1.6.9, langchain-ollama 1.1.0, langchain-aws 1.8.1 (Bedrock in 05, 06) |
 | Local models | Ollama 0.40.2: `llama3.2` (3B), `nomic-embed-text`, `gemma3:4b` (vision), `llama3.2-judge` (CPU-capped RAGAS judge) |
 | Cloud models / hosting | Amazon Bedrock (Claude, Titan Text Embeddings v2) by configuration; Bedrock Guardrails, Bedrock AgentCore Runtime 1.24.1 (06) |
+| Live data APIs | ClinicalTrials.gov API v2 (07), SEC EDGAR submissions / filings / XBRL company facts and Yahoo Finance chart API (08) |
 | Vector store / search | ChromaDB 1.5.9 + in-process BM25 (hybrid with reciprocal rank fusion) |
-| Document extraction | pdfplumber 0.11.10, PyMuPDF 1.28.2, python-docx 1.2.0, BeautifulSoup 4.15.0, PyYAML |
+| Document extraction | pdfplumber 0.11.10, PyMuPDF 1.28.2, python-docx 1.2.0, BeautifulSoup 4.15.0 + lxml (EDGAR HTML), PyYAML; `gemma3:4b` figure captions (03, 07) |
 | Analytics / ML | pandas 3.0.6, numpy 2.5.4, scikit-learn 1.9.1, joblib 1.6.0 |
 | API / UI | FastAPI 0.143.0 + Uvicorn 0.54.0, Streamlit 1.65.0 |
-| Evaluation | RAGAS 0.4.3 (01-03, 05), golden set + LLM-as-judge quality gates and guardrail red-team suite (06), LangSmith experiments |
+| Evaluation | RAGAS 0.4.3 (01-03, 05, 07, 08), golden set + LLM-as-judge quality gates and guardrail red-team suite (06), LangSmith experiments |
 | Monitoring | LangSmith 0.14.7, Prometheus-format `/metrics`, JSONL audit logs |
 | Quality | pytest 9.1.1, ruff 0.17.0 |
-| Slides | pptxgenjs 3.12.0 (Node; 01-05), python-pptx 1.0.2 (06) |
+| Slides | pptxgenjs 3.12.0 (Node; decks 01-05, one-slide pitches 07-08 via `tools/deck/pitch.js`), python-pptx 1.0.2 (06) |
 
 ## Common building blocks
 | Concern | Implementation |
 |---|---|
-| Orchestration | LangGraph `StateGraph` - supervisor + specialist agents (01, 02, 06) or a single-agent workflow (03, 05); deterministic plans, bounded loops; 06 adds a critic loop and checkpointer memory per session |
+| Orchestration | LangGraph `StateGraph` - supervisor + specialist agents (01, 02, 06) or a single-agent workflow (03, 05); deterministic plans, bounded loops; 06 adds a critic loop and checkpointer memory per session; 07 and 08 fan out to parallel section / data agents and join into one writer call followed by a grounding or compliance check |
 | Models | Ollama locally (`llama3.2`, `nomic-embed-text`, `gemma3:4b` for vision); Amazon Bedrock by configuration (05 and 06 document the AWS path; 06 deploys to Bedrock AgentCore Runtime) |
 | RAG | Extraction to Markdown -> structure-aware chunking (sections, whole tables, contextual headers) or one chunk per CSV row -> ChromaDB -> hybrid vector + BM25 retrieval with metadata filters (06: header-aware chunks, dense retrieval, Chroma or Bedrock Knowledge Bases) |
 | Roles | 01-05: `roles.yaml` + `X-API-Key` demo keys; intent / task / source / zone / clearance permissions. 06: member-scoped claim authorization in code + optional API key |
@@ -67,7 +72,8 @@ cd C:\AI\ai-engineering-portfolio
 python -m venv .venv; .venv\Scripts\Activate.ps1
 pip install -r 01-payment-ops-intelligence/requirements.txt -r 02-robotics-fleet-assistant/requirements.txt `
             -r 03-supply-chain-knowledge-assistant/requirements.txt -r 04-project-feasibility-ml/requirements.txt `
-            -r 05-plant-assist/requirements-app.txt -r 06-health-member-services-copilot/requirements-dev.txt
+            -r 05-plant-assist/requirements-app.txt -r 06-health-member-services-copilot/requirements-dev.txt `
+            -r 07-healthcare-condition-briefing/requirements.txt -r 08-finance-stock-briefing/requirements.txt
 
 # 2. Local models (Ollama)
 ollama pull llama3.2; ollama pull nomic-embed-text; ollama pull gemma3:4b
@@ -83,13 +89,13 @@ Each project's README has its own run, test, evaluation and monitoring instructi
 
 ## Run all projects at once
 ```powershell
-.\scripts\start_all.ps1                  # APIs :8001-8005 + UIs :8501-8505, 06 on :8080 (builds a missing index first)
-.\scripts\start_all.ps1 -Projects 01,06  # or just some of them
+.\scripts\start_all.ps1                  # APIs :8001-8008 + UIs :8501-8508 (06 on :8080); builds a missing index first
+.\scripts\start_all.ps1 -Projects 07,08  # or just some of them
 .\scripts\status.ps1                     # which APIs / UIs are up
 .\scripts\stop_all.ps1                   # stop them all
 ```
 Logs: `<project>\logs\api.log` and `ui.log`. Ollama must be running for LLM answers; guardrail refusals,
-search and the ML predictions (04) work without it. All eleven Python processes use about 2-3 GB of RAM.
+search and the ML predictions (04) work without it. All fifteen Python processes use about 3-4 GB of RAM - start only the projects you need.
 
 | Project | Open in the browser | Try it with |
 |---|---|---|
@@ -99,6 +105,8 @@ search and the ML predictions (04) work without it. All eleven Python processes 
 | 04 Feasibility ML | http://localhost:8504 - API http://localhost:8004/docs | role `project_manager`: score a project in the form |
 | 05 PlantAssist | http://localhost:8505 - API http://localhost:8005/docs | role `floor_supervisor`: "How do I replace the main cylinder seal on the HP-200 press?" |
 | 06 Member Services Copilot | http://localhost:8080 (chat UI; API on the same port, `POST /chat`) | member `M1001`: "Why was claim CLM-10002 denied and what can I do?" |
+| 07 Condition Briefing | http://localhost:8507 - API http://localhost:8007/docs | role `strategy_analyst`: briefing on "heart failure"; Extraction tab shows how the PDF was parsed |
+| 08 Stock Briefing | http://localhost:8508 - API http://localhost:8008/docs | role `financial_advisor`: briefing on `NWRB`; ask "Should my client buy HLXB?" (refused) |
 
 In the API docs page, open an endpoint, click **Try it out** and put a demo key from the project's README
 (e.g. `analyst-demo-key`) in the `x-api-key` field. In the UIs, pick the role from the sidebar.
@@ -124,6 +132,7 @@ RAGAS (its thread cap lives in the model). Expect 1-3 minutes per LLM answer on 
 ```
 01-payment-ops-intelligence/   02-robotics-fleet-assistant/   03-supply-chain-knowledge-assistant/
 04-project-feasibility-ml/     05-plant-assist/               06-health-member-services-copilot/
+07-healthcare-condition-briefing/  08-finance-stock-briefing/
   <package>/  data/ (generator + synthetic raw data)  eval/  tests/  ui/  docs/ (DESIGN.md + .pptx)  README.md
 tools/deck/      shared slide-deck builder (pptxgenjs)     tools/ollama/   capped judge Modelfile
 scripts/         start_all.ps1 / stop_all.ps1 / status.ps1 (ports in projects.ps1), run_all_tests.ps1 / .sh

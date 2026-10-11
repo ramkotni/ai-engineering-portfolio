@@ -1,0 +1,41 @@
+# Sample roles. `clearance` = highest document classification the role may retrieve (public < internal);
+# internal = the health system's own strategy documents. `tasks` = briefing and/or follow-up questions (qa).
+# `live_data` = may pull live trial data from ClinicalTrials.gov. `style` shapes the briefing.
+roles:
+  strategy_analyst:
+    description: Health-system strategy analyst - prepares condition briefings and asks follow-up questions.
+    clearance: internal
+    tasks: [briefing, qa]
+    live_data: true
+    style: analyst
+  service_line_director:
+    description: Cardiometabolic service-line director - briefings with strategic considerations.
+    clearance: internal
+    tasks: [briefing, qa]
+    live_data: true
+    style: analyst
+  executive:
+    description: Health-system executive (CSO / COO) - short executive briefings only.
+    clearance: internal
+    tasks: [briefing]
+    live_data: false
+    style: executive
+  clinical_advisor:
+    description: Physician advisor to the strategy team - reviews the clinical content.
+    clearance: internal
+    tasks: [briefing, qa]
+    live_data: true
+    style: clinical
+  external_consultant:
+    description: External consultant - public guidelines and trial registry only, no internal strategy documents.
+    clearance: public
+    tasks: [briefing, qa]
+    live_data: false
+    style: analyst
+
+demo_api_keys:
+  analyst-demo-key: strategy_analyst
+  director-demo-key: service_line_director
+  exec-demo-key: executive
+  clinical-demo-key: clinical_advisor
+  consultant-demo-key: external_consultant

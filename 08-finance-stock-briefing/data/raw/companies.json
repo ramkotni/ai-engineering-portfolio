@@ -1,0 +1,22 @@
+{
+  "NWRB": {
+    "name": "Northwind Robotics Inc.",
+    "exchange": "NASDAQ",
+    "sector": "Industrials",
+    "industry": "Industrial automation and robotics",
+    "cik": "0009900101",
+    "fiscal_year_end": "12-31",
+    "hq": "Columbus, Ohio",
+    "employees": 4120
+  },
+  "HLXB": {
+    "name": "Helix Biologics Corp.",
+    "exchange": "NASDAQ",
+    "sector": "Health Care",
+    "industry": "Biotechnology",
+    "cik": "0009900202",
+    "fiscal_year_end": "12-31",
+    "hq": "Cambridge, Massachusetts",
+    "employees": 860
+  }
+}

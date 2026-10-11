@@ -1,0 +1,104 @@
+{
+  "baseline": {
+    "top_k": 6,
+    "mode": "hybrid",
+    "context_precision": 0.958,
+    "context_recall": 0.892
+  },
+  "llm_judged": [
+    {
+      "question": "What is the target dose of sacubitril/valsartan and which recommendation class applies?",
+      "faithfulness": null,
+      "faithfulness_error": "InstructorRetryException",
+      "llm_context_recall": 1.0,
+      "response_groundedness": 0.0,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "rouge_l": 0.333,
+      "latency_ms": 75396
+    },
+    {
+      "question": "When is vericiguat recommended for HFrEF?",
+      "faithfulness": 0.333,
+      "llm_context_recall": 1.0,
+      "response_groundedness": 1.0,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "rouge_l": 0.216,
+      "latency_ms": 108235
+    }
+  ],
+  "sweep": [
+    {
+      "top_k": 3,
+      "mode": "vector",
+      "context_precision": 0.847,
+      "context_recall": 0.892,
+      "f1": 0.869
+    },
+    {
+      "top_k": 6,
+      "mode": "vector",
+      "context_precision": 0.841,
+      "context_recall": 0.892,
+      "f1": 0.866
+    },
+    {
+      "top_k": 10,
+      "mode": "vector",
+      "context_precision": 0.839,
+      "context_recall": 0.892,
+      "f1": 0.865
+    },
+    {
+      "top_k": 3,
+      "mode": "bm25",
+      "context_precision": 0.958,
+      "context_recall": 0.892,
+      "f1": 0.924
+    },
+    {
+      "top_k": 6,
+      "mode": "bm25",
+      "context_precision": 0.958,
+      "context_recall": 0.892,
+      "f1": 0.924
+    },
+    {
+      "top_k": 10,
+      "mode": "bm25",
+      "context_precision": 0.927,
+      "context_recall": 0.933,
+      "f1": 0.93
+    },
+    {
+      "top_k": 3,
+      "mode": "hybrid",
+      "context_precision": 0.958,
+      "context_recall": 0.892,
+      "f1": 0.924
+    },
+    {
+      "top_k": 6,
+      "mode": "hybrid",
+      "context_precision": 0.958,
+      "context_recall": 0.892,
+      "f1": 0.924
+    },
+    {
+      "top_k": 10,
+      "mode": "hybrid",
+      "context_precision": 0.922,
+      "context_recall": 0.933,
+      "f1": 0.927
+    }
+  ],
+  "recommended": {
+    "top_k": 6,
+    "mode": "hybrid",
+    "context_precision": 0.958,
+    "context_recall": 0.892,
+    "f1": 0.924,
+    "note": "best alternative within 0.01 F1 of current settings - keep current"
+  }
+}

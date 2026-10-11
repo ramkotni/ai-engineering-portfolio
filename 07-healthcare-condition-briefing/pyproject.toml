@@ -1,0 +1,16 @@
+[project]
+name = "healthcare-condition-briefing"
+version = "0.1.0"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 160
+
+[tool.ruff.lint.per-file-ignores]
+"data/*" = ["E501"]
+"*/api.py" = ["B008"]  # FastAPI Depends() in parameter defaults is the framework idiom
+"ui/*" = ["E402"]  # streamlit apps put the project root on sys.path before importing

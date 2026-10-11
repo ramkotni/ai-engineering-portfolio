@@ -1,0 +1,147 @@
+{
+  "baseline": {
+    "top_k": 6,
+    "mode": "hybrid",
+    "context_precision": 0.972,
+    "context_recall": 1.0
+  },
+  "sweep": [
+    {
+      "top_k": 3,
+      "mode": "vector",
+      "context_precision": 0.9,
+      "context_recall": 0.933,
+      "f1": 0.916
+    },
+    {
+      "top_k": 6,
+      "mode": "vector",
+      "context_precision": 0.87,
+      "context_recall": 1.0,
+      "f1": 0.93
+    },
+    {
+      "top_k": 10,
+      "mode": "vector",
+      "context_precision": 0.87,
+      "context_recall": 1.0,
+      "f1": 0.93
+    },
+    {
+      "top_k": 3,
+      "mode": "bm25",
+      "context_precision": 1.0,
+      "context_recall": 0.967,
+      "f1": 0.983
+    },
+    {
+      "top_k": 6,
+      "mode": "bm25",
+      "context_precision": 0.983,
+      "context_recall": 1.0,
+      "f1": 0.991
+    },
+    {
+      "top_k": 10,
+      "mode": "bm25",
+      "context_precision": 0.983,
+      "context_recall": 1.0,
+      "f1": 0.991
+    },
+    {
+      "top_k": 3,
+      "mode": "hybrid_w1",
+      "context_precision": 0.883,
+      "context_recall": 0.967,
+      "f1": 0.923
+    },
+    {
+      "top_k": 6,
+      "mode": "hybrid_w1",
+      "context_precision": 0.876,
+      "context_recall": 1.0,
+      "f1": 0.934
+    },
+    {
+      "top_k": 10,
+      "mode": "hybrid_w1",
+      "context_precision": 0.876,
+      "context_recall": 1.0,
+      "f1": 0.934
+    },
+    {
+      "top_k": 3,
+      "mode": "hybrid_w2",
+      "context_precision": 0.983,
+      "context_recall": 0.967,
+      "f1": 0.975
+    },
+    {
+      "top_k": 6,
+      "mode": "hybrid_w2",
+      "context_precision": 0.972,
+      "context_recall": 1.0,
+      "f1": 0.986
+    },
+    {
+      "top_k": 10,
+      "mode": "hybrid_w2",
+      "context_precision": 0.972,
+      "context_recall": 1.0,
+      "f1": 0.986
+    },
+    {
+      "top_k": 3,
+      "mode": "hybrid_w3",
+      "context_precision": 1.0,
+      "context_recall": 0.967,
+      "f1": 0.983
+    },
+    {
+      "top_k": 6,
+      "mode": "hybrid_w3",
+      "context_precision": 0.983,
+      "context_recall": 1.0,
+      "f1": 0.991
+    },
+    {
+      "top_k": 10,
+      "mode": "hybrid_w3",
+      "context_precision": 0.983,
+      "context_recall": 1.0,
+      "f1": 0.991
+    }
+  ],
+  "recommended": {
+    "top_k": 6,
+    "mode": "hybrid_w2",
+    "context_precision": 0.972,
+    "context_recall": 1.0,
+    "f1": 0.986,
+    "note": "best alternative within 0.01 F1 of current settings - keep current"
+  },
+  "llm_judged": [
+    {
+      "question": "What share of Northwind's revenue came from its three largest customers?",
+      "faithfulness": null,
+      "faithfulness_error": "InstructorRetryException",
+      "llm_context_recall": 1.0,
+      "response_groundedness": 0.5,
+      "context_precision": 0.722,
+      "context_recall": 1.0,
+      "rouge_l": 0.32,
+      "latency_ms": 65195
+    },
+    {
+      "question": "How much would a 10 percentage point tariff on actuators reduce Northwind's gross margin?",
+      "faithfulness": null,
+      "faithfulness_error": "InstructorRetryException",
+      "llm_context_recall": 1.0,
+      "response_groundedness": 1.0,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "rouge_l": 0.098,
+      "latency_ms": 119976
+    }
+  ]
+}

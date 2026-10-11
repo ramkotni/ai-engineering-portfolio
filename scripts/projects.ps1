@@ -9,4 +9,6 @@ $PortfolioProjects = [ordered]@{
     "05" = @{ dir = "05-plant-assist";                     api = "plant_assist.api:app"; apiPort = 8005; uiPort = 8505; index = "plant_assist.ingest"; indexDir = ".chroma" }
     # 06 serves API + chat UI from one FastAPI app on 8080 (the Bedrock AgentCore Runtime port contract)
     "06" = @{ dir = "06-health-member-services-copilot";   api = "app.api:app";          apiPort = 8080; uiPort = $null; index = "app.ingest --reset"; indexDir = "chroma_db" }
+    "07" = @{ dir = "07-healthcare-condition-briefing";    api = "medbrief.api:app";     apiPort = 8007; uiPort = 8507; index = "medbrief.ingest";     indexDir = ".chroma" }
+    "08" = @{ dir = "08-finance-stock-briefing";           api = "stockbrief.api:app";   apiPort = 8008; uiPort = 8508; index = "stockbrief.ingest";   indexDir = ".chroma" }
 }

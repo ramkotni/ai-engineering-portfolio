@@ -1,0 +1,47 @@
+{
+  "CARD-GL-2026": {
+    "file": "CARD-GL-2026_hfref_guideline_summary.pdf",
+    "title": "Heart Failure with Reduced Ejection Fraction: Guideline Summary 2026",
+    "classification": "public",
+    "pages": 4,
+    "header_footer_lines_removed": 8,
+    "two_column_blocks": 4,
+    "tables_found": 3,
+    "tables_merged_across_pages": 1,
+    "footnotes": 2,
+    "images_extracted": 2,
+    "images": [
+      {
+        "image_id": "CARD-GL-2026_p2_img1",
+        "page": 2,
+        "caption_hint": "Figure 1. HFrEF treatment algorithm: GDMT initiation, reassessment and device or advanced-therapy decisions."
+      },
+      {
+        "image_id": "CARD-GL-2026_p3_img1",
+        "page": 3,
+        "caption_hint": "Figure 2. Active HFrEF pipeline by modality, synthetic registry 2026."
+      }
+    ]
+  },
+  "DM-GL-2026": {
+    "file": "DM-GL-2026_type2_diabetes_care_summary.html",
+    "title": "Type 2 Diabetes: Standards of Care Summary 2026",
+    "classification": "public",
+    "tables_found": 1,
+    "images": []
+  },
+  "STRAT-2026": {
+    "file": "STRAT-2026_cardiometabolic_service_line.docx",
+    "title": "Cardiometabolic Service Line Strategy Brief 2026",
+    "classification": "internal",
+    "tables_found": 1,
+    "images_extracted": 1,
+    "images": [
+      {
+        "image_id": "STRAT-2026_img1",
+        "page": null,
+        "caption_hint": ""
+      }
+    ]
+  }
+}

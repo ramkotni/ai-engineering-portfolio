@@ -1,0 +1,108 @@
+{
+  "NWRB": {
+    "annual": [
+      {
+        "fy": 2023,
+        "revenue": 1184.2,
+        "gross_profit": 509.2,
+        "operating_income": 97.1,
+        "net_income": 71.0,
+        "eps_diluted": 1.32,
+        "rd_expense": 142.6,
+        "cash": 301.4,
+        "total_debt": 420.0,
+        "diluted_shares": 53.8
+      },
+      {
+        "fy": 2024,
+        "revenue": 1356.9,
+        "gross_profit": 597.0,
+        "operating_income": 130.3,
+        "net_income": 98.7,
+        "eps_diluted": 1.83,
+        "rd_expense": 163.0,
+        "cash": 355.2,
+        "total_debt": 385.0,
+        "diluted_shares": 53.9
+      },
+      {
+        "fy": 2025,
+        "revenue": 1541.3,
+        "gross_profit": 693.6,
+        "operating_income": 161.8,
+        "net_income": 124.5,
+        "eps_diluted": 2.31,
+        "rd_expense": 184.9,
+        "cash": 412.6,
+        "total_debt": 350.0,
+        "diluted_shares": 53.9
+      }
+    ],
+    "quarter": {
+      "period": "Q2 2026",
+      "end": "2026-06-30",
+      "revenue": 418.7,
+      "net_income": 36.9,
+      "eps_diluted": 0.68,
+      "prior_year": {
+        "period": "Q2 2025",
+        "revenue": 371.2,
+        "net_income": 29.8,
+        "eps_diluted": 0.55
+      }
+    }
+  },
+  "HLXB": {
+    "annual": [
+      {
+        "fy": 2023,
+        "revenue": 142.5,
+        "gross_profit": 142.5,
+        "operating_income": -265.8,
+        "net_income": -251.2,
+        "eps_diluted": -2.98,
+        "rd_expense": 331.4,
+        "cash": 1402.7,
+        "total_debt": 0.0,
+        "diluted_shares": 84.3
+      },
+      {
+        "fy": 2024,
+        "revenue": 168.0,
+        "gross_profit": 168.0,
+        "operating_income": -289.5,
+        "net_income": -270.9,
+        "eps_diluted": -3.15,
+        "rd_expense": 372.8,
+        "cash": 1268.4,
+        "total_debt": 0.0,
+        "diluted_shares": 86.0
+      },
+      {
+        "fy": 2025,
+        "revenue": 191.4,
+        "gross_profit": 191.4,
+        "operating_income": -321.7,
+        "net_income": -298.6,
+        "eps_diluted": -3.41,
+        "rd_expense": 412.7,
+        "cash": 1105.3,
+        "total_debt": 0.0,
+        "diluted_shares": 87.6
+      }
+    ],
+    "quarter": {
+      "period": "Q2 2026",
+      "end": "2026-06-30",
+      "revenue": 52.3,
+      "net_income": -81.2,
+      "eps_diluted": -0.91,
+      "prior_year": {
+        "period": "Q2 2025",
+        "revenue": 46.1,
+        "net_income": -72.5,
+        "eps_diluted": -0.83
+      }
+    }
+  }
+}

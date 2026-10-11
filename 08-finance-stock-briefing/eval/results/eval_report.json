@@ -1,0 +1,67 @@
+{
+  "extraction": {
+    "filings_passed": 6,
+    "filings": 6,
+    "checks": {
+      "HLXB-8-K-2026-10-01": {
+        "sections_found": true,
+        "page_furniture_removed": true,
+        "no_hidden_xbrl": true
+      },
+      "HLXB-10-Q-2026-08-04": {
+        "sections_found": true,
+        "page_furniture_removed": true,
+        "no_hidden_xbrl": true
+      },
+      "HLXB-10-K-2026-02-24": {
+        "sections_found": true,
+        "page_furniture_removed": true,
+        "no_hidden_xbrl": true
+      },
+      "NWRB-8-K-2026-09-15": {
+        "sections_found": true,
+        "page_furniture_removed": true,
+        "no_hidden_xbrl": true
+      },
+      "NWRB-10-Q-2026-08-04": {
+        "sections_found": true,
+        "page_furniture_removed": true,
+        "no_hidden_xbrl": true
+      },
+      "NWRB-10-K-2026-02-24": {
+        "sections_found": true,
+        "page_furniture_removed": true,
+        "no_hidden_xbrl": true
+      }
+    }
+  },
+  "retrieval": {
+    "k": 6,
+    "hit_rate": 1,
+    "mrr": 1.0,
+    "cross_ticker_chunks": 0,
+    "misses": []
+  },
+  "guardrails": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "wrong": []
+  },
+  "computed_metrics": {
+    "passed": 5,
+    "total": 5,
+    "checks": {
+      "nwrb_revenue_growth": true,
+      "nwrb_gross_margin": true,
+      "nwrb_pe": true,
+      "hlxb_pe_not_meaningful": true,
+      "hlxb_quarter_growth": true
+    }
+  },
+  "compliance_filter": {
+    "advice_removed": 5,
+    "advice_total": 5,
+    "factual_kept": 4,
+    "factual_total": 4
+  }
+}

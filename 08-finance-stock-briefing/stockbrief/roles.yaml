@@ -1,0 +1,35 @@
+# Sample roles for a wealth-management firm. `tasks`: briefing, qa (follow-up questions on filings), quote, audit
+# (read the audit log). `live_data`: may use live quotes and SEC EDGAR. `style` shapes the briefing.
+roles:
+  financial_advisor:
+    description: Client-facing financial advisor - gets up to speed on a stock before a client conversation.
+    tasks: [briefing, qa, quote]
+    live_data: true
+    style: advisor
+  research_analyst:
+    description: Equity research analyst - deeper filing detail and follow-up questions.
+    tasks: [briefing, qa, quote]
+    live_data: true
+    style: analyst
+  compliance_officer:
+    description: Supervises advisor communications - reviews briefings and the audit trail.
+    tasks: [briefing, qa, quote, audit]
+    live_data: true
+    style: analyst
+  client_service_associate:
+    description: Client-service associate - quote look-ups only, no briefings.
+    tasks: [quote]
+    live_data: false
+    style: advisor
+  advisor_trainee:
+    description: Advisor in training - briefings on the synthetic demo companies only.
+    tasks: [briefing]
+    live_data: false
+    style: advisor
+
+demo_api_keys:
+  advisor-demo-key: financial_advisor
+  analyst-demo-key: research_analyst
+  compliance-demo-key: compliance_officer
+  associate-demo-key: client_service_associate
+  trainee-demo-key: advisor_trainee
