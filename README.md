@@ -1,8 +1,8 @@
 # AI Engineering Portfolio
 
-Five end-to-end AI engineering prototypes built with **Python, LangGraph and LangChain**, each with synthetic
+Six end-to-end AI engineering prototypes built with **Python, LangGraph and LangChain**, each with synthetic
 sample data, a REST API, a UI, role-based access, guardrails, evaluation (RAGAS where retrieval is involved),
-LangSmith tracing, Prometheus-style metrics, tests, a design document and a slide deck.
+LangSmith tracing, Prometheus-style metrics (01-05), tests, design documentation and slide decks.
 
 > **Disclaimer.** These are independent re-implementations of architecture patterns I have worked with, built on
 > **synthetic data** for demonstration. They contain no employer code, systems, documents or data; all names,
@@ -15,6 +15,7 @@ LangSmith tracing, Prometheus-style metrics, tests, a design document and a slid
 | 03 | [Supply Chain Knowledge Assistant](03-supply-chain-knowledge-assistant/) | **Multimodal RAG** (single-agent workflow) | PDF / Word / HTML / CSV ingestion, **image extraction + vision captions**, prompt templates, clearance-based access | [:8003/docs](http://localhost:8003/docs) / [:8503](http://localhost:8503) |
 | 04 | [Project Feasibility Prediction](04-project-feasibility-ml/) | **Classical ML** + LangGraph advisor | scikit-learn pipeline, model comparison, interpretable logistic regression, PSI drift, explanations | [:8004/docs](http://localhost:8004/docs) / [:8504](http://localhost:8504) |
 | 05 | [PlantAssist](05-plant-assist/) | **Routed RAG** (agentic workflow) | Routes to safety / maintenance / quality docs, safety-first policy, numeric grounding, AWS Bedrock path | [:8005/docs](http://localhost:8005/docs) / [:8505](http://localhost:8505) |
+| 06 | [Health Member Services Copilot](06-health-member-services-copilot/) | **Multi-agent** (supervisor + policy RAG + claims agent) with critic loop and session memory | Cited benefit answers, claim-denial explanations, member-scoped claim authorization, PII redaction before the LLM, Bedrock Guardrails, **AWS Bedrock AgentCore** deploy path | [:8080](http://localhost:8080) (API + chat UI) |
 
 ## Business use cases and users
 | # | Business problem | Who uses it (sample roles) |
@@ -24,37 +25,39 @@ LangSmith tracing, Prometheus-style metrics, tests, a design document and a slid
 | 03 | Controlled documents in five formats with key facts inside figures, and confidential content that must not reach partners | Supply planners, quality assurance, regulatory affairs, external logistics partners (public documents only) |
 | 04 | Inconsistent, reviewer-dependent funding decisions for new projects; risky projects approved and then slipping | Project managers, portfolio directors / PMO, the data scientist who owns the model, read-only stakeholders |
 | 05 | Floor supervisors who know the question but not which binder (safety, maintenance, quality) holds the answer | Floor supervisors, maintenance technicians, quality engineers, EHS managers, contractors (safety only) |
+| 06 | High volume of repetitive benefit and claim-denial questions in health-plan member services, with PHI that must stay protected | Plan members (portal / app chat, own claims only), member-services representatives, portal backends via API |
 
 Each project README has a **Business use case**, **Who uses it** (user, typical question, role, demo API key) and
-**Tech stack** section; each `docs/DESIGN.md` has the full design rationale.
+**Tech stack** section. Projects 01-05 have a `docs/DESIGN.md` with the full design rationale; 06 documents its design
+in its README, slides (with a code walkthrough) and AWS deploy guide.
 
 ## Tech stack (versions tested)
 | Layer | Technology |
 |---|---|
 | Language | Python 3.12.5 |
 | Agent orchestration | LangGraph 1.2.14 |
-| LLM framework | LangChain core 1.6.9, langchain-ollama 1.1.0 (langchain-aws for Bedrock in 05) |
+| LLM framework | LangChain core 1.6.9, langchain-ollama 1.1.0, langchain-aws 1.8.1 (Bedrock in 05, 06) |
 | Local models | Ollama 0.40.2: `llama3.2` (3B), `nomic-embed-text`, `gemma3:4b` (vision), `llama3.2-judge` (CPU-capped RAGAS judge) |
-| Cloud models | Amazon Bedrock (Claude, Titan Text Embeddings v2) by configuration |
+| Cloud models / hosting | Amazon Bedrock (Claude, Titan Text Embeddings v2) by configuration; Bedrock Guardrails, Bedrock AgentCore Runtime 1.24.1 (06) |
 | Vector store / search | ChromaDB 1.5.9 + in-process BM25 (hybrid with reciprocal rank fusion) |
 | Document extraction | pdfplumber 0.11.10, PyMuPDF 1.28.2, python-docx 1.2.0, BeautifulSoup 4.15.0, PyYAML |
 | Analytics / ML | pandas 3.0.6, numpy 2.5.4, scikit-learn 1.9.1, joblib 1.6.0 |
 | API / UI | FastAPI 0.143.0 + Uvicorn 0.54.0, Streamlit 1.65.0 |
-| Evaluation | RAGAS 0.4.3, LangSmith experiments, project eval scripts |
+| Evaluation | RAGAS 0.4.3 (01-03, 05), golden set + LLM-as-judge quality gates and guardrail red-team suite (06), LangSmith experiments |
 | Monitoring | LangSmith 0.14.7, Prometheus-format `/metrics`, JSONL audit logs |
 | Quality | pytest 9.1.1, ruff 0.17.0 |
-| Slides | pptxgenjs 3.12.0 (Node) |
+| Slides | pptxgenjs 3.12.0 (Node; 01-05), python-pptx 1.0.2 (06) |
 
-## Common building blocks (in every project)
+## Common building blocks
 | Concern | Implementation |
 |---|---|
-| Orchestration | LangGraph `StateGraph` - supervisor + specialist agents (01, 02) or a single-agent workflow (03, 05); deterministic plans, bounded loops |
-| Models | Ollama locally (`llama3.2`, `nomic-embed-text`, `gemma3:4b` for vision); Amazon Bedrock by configuration (05 documents the AWS path) |
-| RAG | Extraction to Markdown -> structure-aware chunking (sections, whole tables, contextual headers) or one chunk per CSV row -> ChromaDB -> hybrid vector + BM25 retrieval with metadata filters |
-| Roles | `roles.yaml` + `X-API-Key` demo keys; intent / task / source / zone / clearance permissions |
+| Orchestration | LangGraph `StateGraph` - supervisor + specialist agents (01, 02, 06) or a single-agent workflow (03, 05); deterministic plans, bounded loops; 06 adds a critic loop and checkpointer memory per session |
+| Models | Ollama locally (`llama3.2`, `nomic-embed-text`, `gemma3:4b` for vision); Amazon Bedrock by configuration (05 and 06 document the AWS path; 06 deploys to Bedrock AgentCore Runtime) |
+| RAG | Extraction to Markdown -> structure-aware chunking (sections, whole tables, contextual headers) or one chunk per CSV row -> ChromaDB -> hybrid vector + BM25 retrieval with metadata filters (06: header-aware chunks, dense retrieval, Chroma or Bedrock Knowledge Bases) |
+| Roles | 01-05: `roles.yaml` + `X-API-Key` demo keys; intent / task / source / zone / clearance permissions. 06: member-scoped claim authorization in code + optional API key |
 | Guardrails | Prompt-injection and action/safety refusals, PII redaction, numeric and ID grounding of answers, slot grounding |
-| Evaluation | Labelled datasets per project; `eval/run_eval.py`; **RAGAS** (`eval/ragas_eval.py`: non-LLM context precision/recall, retrieval-mode x top_k optimisation sweep, LLM-judged faithfulness / groundedness / context recall); LangSmith experiments |
-| Monitoring | LangSmith tracing + user feedback; `GET /metrics` (Prometheus text) and `/metrics/summary`; `logs/audit.jsonl` |
+| Evaluation | Labelled datasets per project; `eval/run_eval.py`; **RAGAS** (`eval/ragas_eval.py`: non-LLM context precision/recall, retrieval-mode x top_k optimisation sweep, LLM-judged faithfulness / groundedness / context recall); LangSmith experiments. 06: golden set + LLM-as-judge quality gates, 31-case guardrail red-team suite |
+| Monitoring | LangSmith tracing + user feedback; `GET /metrics` (Prometheus text) and `/metrics/summary`; `logs/audit.jsonl` (01-05). 06: LangSmith threads, automatic feedback scores, structured logs |
 | Tests | pytest with fake LLMs and keyword retrievers - no model needed |
 
 ## Quick start
@@ -64,7 +67,7 @@ cd C:\AI\ai-engineering-portfolio
 python -m venv .venv; .venv\Scripts\Activate.ps1
 pip install -r 01-payment-ops-intelligence/requirements.txt -r 02-robotics-fleet-assistant/requirements.txt `
             -r 03-supply-chain-knowledge-assistant/requirements.txt -r 04-project-feasibility-ml/requirements.txt `
-            -r 05-plant-assist/requirements-app.txt
+            -r 05-plant-assist/requirements-app.txt -r 06-health-member-services-copilot/requirements-dev.txt
 
 # 2. Local models (Ollama)
 ollama pull llama3.2; ollama pull nomic-embed-text; ollama pull gemma3:4b
@@ -80,13 +83,13 @@ Each project's README has its own run, test, evaluation and monitoring instructi
 
 ## Run all projects at once
 ```powershell
-.\scripts\start_all.ps1                  # APIs on :8001-8005, UIs on :8501-8505 (builds a missing index first)
-.\scripts\start_all.ps1 -Projects 01,03  # or just some of them
+.\scripts\start_all.ps1                  # APIs :8001-8005 + UIs :8501-8505, 06 on :8080 (builds a missing index first)
+.\scripts\start_all.ps1 -Projects 01,06  # or just some of them
 .\scripts\status.ps1                     # which APIs / UIs are up
 .\scripts\stop_all.ps1                   # stop them all
 ```
 Logs: `<project>\logs\api.log` and `ui.log`. Ollama must be running for LLM answers; guardrail refusals,
-search and the ML predictions (04) work without it. Ten Python processes use about 2-3 GB of RAM.
+search and the ML predictions (04) work without it. All eleven Python processes use about 2-3 GB of RAM.
 
 | Project | Open in the browser | Try it with |
 |---|---|---|
@@ -95,6 +98,7 @@ search and the ML predictions (04) work without it. Ten Python processes use abo
 | 03 Supply Chain KB | http://localhost:8503 - API http://localhost:8003/docs | role `quality_assurance`: "Find documents about temperature excursions" |
 | 04 Feasibility ML | http://localhost:8504 - API http://localhost:8004/docs | role `project_manager`: score a project in the form |
 | 05 PlantAssist | http://localhost:8505 - API http://localhost:8005/docs | role `floor_supervisor`: "How do I replace the main cylinder seal on the HP-200 press?" |
+| 06 Member Services Copilot | http://localhost:8080 (chat UI; API on the same port, `POST /chat`) | member `M1001`: "Why was claim CLM-10002 denied and what can I do?" |
 
 In the API docs page, open an endpoint, click **Try it out** and put a demo key from the project's README
 (e.g. `analyst-demo-key`) in the `x-api-key` field. In the UIs, pick the role from the sidebar.
@@ -119,8 +123,8 @@ RAGAS (its thread cap lives in the model). Expect 1-3 minutes per LLM answer on 
 ## Repository layout
 ```
 01-payment-ops-intelligence/   02-robotics-fleet-assistant/   03-supply-chain-knowledge-assistant/
-04-project-feasibility-ml/     05-plant-assist/
+04-project-feasibility-ml/     05-plant-assist/               06-health-member-services-copilot/
   <package>/  data/ (generator + synthetic raw data)  eval/  tests/  ui/  docs/ (DESIGN.md + .pptx)  README.md
 tools/deck/      shared slide-deck builder (pptxgenjs)     tools/ollama/   capped judge Modelfile
-scripts/         start_all.ps1 / stop_all.ps1 / status.ps1, run_all_tests.ps1 / .sh
+scripts/         start_all.ps1 / stop_all.ps1 / status.ps1 (ports in projects.ps1), run_all_tests.ps1 / .sh
 ```

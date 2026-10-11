@@ -1,10 +1,13 @@
-# Stop the APIs (ports 8001-8005) and UIs (ports 8501-8505) started by start_all.ps1.
+# Stop the APIs and UIs started by start_all.ps1 (ports from projects.ps1).
 #   .\scripts\stop_all.ps1                  # all
 #   .\scripts\stop_all.ps1 -Projects 03     # only project 03
-param([string[]]$Projects = @("01", "02", "03", "04", "05"))
+param([string[]]$Projects = @("01", "02", "03", "04", "05", "06"))
 
+. (Join-Path $PSScriptRoot "projects.ps1")
 foreach ($n in $Projects) {
-    foreach ($port in @((8000 + [int]$n), (8500 + [int]$n))) {
+    $app = $PortfolioProjects[$n]
+    if ($null -eq $app) { Write-Warning "Unknown project $n"; continue }
+    foreach ($port in @($app.apiPort, $app.uiPort) | Where-Object { $_ }) {
         $conns = Get-NetTCPConnection -LocalPort $port -State Listen -ErrorAction SilentlyContinue
         foreach ($procId in ($conns | Select-Object -ExpandProperty OwningProcess -Unique)) {
             Stop-Process -Id $procId -Force -ErrorAction SilentlyContinue

@@ -1,0 +1,26 @@
+# --- Core orchestration ---
+langchain>=0.3.0
+langchain-core>=0.3.0
+langchain-text-splitters>=0.3.0
+langgraph>=0.2.50
+langgraph-checkpoint-sqlite>=2.0.0
+
+# --- Local stack (dev) ---
+langchain-ollama>=0.2.0
+langchain-chroma>=0.1.4
+chromadb>=0.5.0
+
+# --- AWS stack (prod) ---
+langchain-aws>=0.2.10
+boto3>=1.35.0
+bedrock-agentcore>=0.1.0
+
+# --- API / config ---
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+pydantic>=2.7.0
+pydantic-settings>=2.4.0
+python-dotenv>=1.0.0
+
+# --- Observability (optional; enabled via env) ---
+langsmith>=0.1.100

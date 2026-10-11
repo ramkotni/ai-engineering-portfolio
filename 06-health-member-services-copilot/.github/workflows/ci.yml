@@ -1,0 +1,41 @@
+name: ci
+on:
+  push: { branches: [main] }
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r requirements-dev.txt
+      - run: ruff check app eval tests
+      - run: pytest -q   # fake LLM + fake KB: no Ollama/AWS needed
+
+  eval-gate:
+    # Runs the golden-dataset evaluation against Bedrock; fails the build if a quality gate regresses.
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions: { id-token: write, contents: read }
+    env:
+      LLM_PROVIDER: bedrock
+      AWS_REGION: us-east-1
+      RELEVANCE_THRESHOLD: "0.35"
+      EVAL_JUDGE_PROVIDER: bedrock
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_CI_ROLE_ARN }}
+          aws-region: us-east-1
+      - run: pip install -r requirements.txt
+      - run: python -m app.ingest --reset
+      - run: python -m eval.run_eval
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: eval-report, path: eval/reports/ }
