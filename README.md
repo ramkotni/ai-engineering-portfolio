@@ -35,6 +35,11 @@ Each project README has a **Business use case**, **Who uses it** (user, typical 
 **Tech stack** section. Projects 01-05 have a `docs/DESIGN.md` with the full design rationale; 06 documents its design
 in its README, slides (with a code walkthrough) and AWS deploy guide.
 
+Every project also has a TOGAF ADM delivery package in `<project>/docs/togaf/` (14 Markdown files: architecture
+principles through requirements, ADRs, risks, backlog, test cases, CI/CD and operations). They are planning
+documents for a hypothetical production roll-out; costs, sizing and schedules are labelled ESTIMATE with their
+assumptions.
+
 ## Tech stack (versions tested)
 | Layer | Technology |
 |---|---|
